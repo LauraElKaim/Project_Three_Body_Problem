@@ -13,6 +13,11 @@
 - Differential equations programming (first 2 planets then 3).
 - Gif visualization (in 2D and 3D).
 
+## Tasks distribution
+
+-
+
+
 ## Three Body Problem
 
 The goal of this project is to solve the Three Body Problem.
