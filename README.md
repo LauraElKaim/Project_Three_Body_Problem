@@ -13,6 +13,13 @@
 - Differential equations programming (first 2 planets then 3).
 - Gif visualization (in 2D and 3D).
 
+## Tasks distribution
+
+- Gueladio and Mohamed take care of the code : Gueladio will begin by solving the problem when we take only 2 planets. Mohamed will be watching with three planets.
+
+- Laura and Amine will be interested in visualization, in 2D and 3D.
+
+
 ## Three Body Problem
 
 The goal of this project is to solve the Three Body Problem.
