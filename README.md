@@ -1,4 +1,4 @@
-# Project group 7
+# Project : Three body problem
 
 ## Author
 
