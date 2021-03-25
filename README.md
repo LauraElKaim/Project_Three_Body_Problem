@@ -10,15 +10,21 @@
 ## Plan
 
 - Creation of the repository and branches.
-- Differential equations programming (first 2 planets then 3).
-- Gif visualization (in 2D and 3D).
+- Solving differentials equations to associated the problem
+- Differentials equations programming for 2 bodies.
+- Differentials equations programming for 3 bodies.
+- Unit tests.
+- Visualization part (in 2D then 3D).
+- Beamer.
 
 ## Tasks distribution
 
-- Gueladio and Mohamed take care of the code : Gueladio will begin by solving the problem when we take only 2 planets. Mohamed will be watching with three planets.
+- Gueladio and Mohamed take care of the code : Gueladio will begin by solving the problem when we take only 2 planets. Mohamed will be focus on three planets.  More precisely, the resolution of these differentials equations will be done by the RK4 method (Runge-Kutta 4).  
+Using the `Numba` package to speed up numerical resolution.
 
-- Laura and Amine will be interested in visualization, in 2D and 3D.
-
+- Laura and Amine will be interested in visualization, in 2D and 3D.  
+Creation of a program generating 200 images to visualize the evolution of the planets in their respective orbits according to their mutual attractions.  
+Using the package `matplotlib3D`.
 
 ## Three Body Problem
 
@@ -28,5 +34,5 @@ The Three Body Problem is a special case of the n-body problem. In astronomy, th
    
 Here, we will be interested by the sun, mars and the earth. And our starting point will be based on the initial positions and speeds, and also the masses of each of these bodies.
 
-In few words, this problem consists in finding all the possible mathematical solutions to differential equations.  
-These differential equations describe the movements of three stars attracting each other under the effect of gravity.
+In few words, this problem consists in finding mathematical solutions to differential equations with well chosen initial conditions. 
+These differential equations describe the movements of three bodies attracting each other under the effect of gravity.
