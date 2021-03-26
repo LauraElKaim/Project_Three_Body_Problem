@@ -1,6 +1,6 @@
-# Project : Three body problem
+# Project: Three body problem
 
-## Author
+## Authors
 
 - Touzani Amine (amine.touzani@etu.umontpellier.fr)
 - Niasse Gueladio (gueladio.niasse@etu.umontpellier.fr)
@@ -35,7 +35,7 @@ The Three Body Problem is a special case of the n-body problem. In astronomy, th
 Here, we will be interested by the sun, mars and the earth. And our starting point will be based on the initial positions and speeds, and also the masses of each of these bodies.
 
 In few words, this problem consists in finding mathematical solutions to differential equations with well chosen initial conditions. 
-These differential equations describe the movements of three bodies attracting each other under the effect of gravity.
+These differential equations describe the motions of three bodies attracting each other under the effect of gravity.
 
 The goal is to get something like this in motion (gif or mp4):
 
