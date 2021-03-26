@@ -36,3 +36,6 @@ Here, we will be interested by the sun, mars and the earth. And our starting poi
 
 In few words, this problem consists in finding mathematical solutions to differential equations with well chosen initial conditions. 
 These differential equations describe the movements of three bodies attracting each other under the effect of gravity.
+
+The goal is to get something like this:
+![image](https://user-images.githubusercontent.com/78499945/112620163-70f6f180-8e28-11eb-8479-599305bcabf4.png)
