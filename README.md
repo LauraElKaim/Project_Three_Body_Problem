@@ -10,7 +10,7 @@
 ## Plan
 
 - Creation of the repository and branches.
-- Solving differentials equations to associated the problem
+- Solving differentials equations to associated the problem.
 - Differentials equations programming for 2 bodies.
 - Differentials equations programming for 3 bodies.
 - Unit tests.
@@ -35,7 +35,8 @@ The Three Body Problem is a special case of the n-body problem. In astronomy, th
 Here, we will be interested by the sun, mars and the earth. And our starting point will be based on the initial positions and speeds, and also the masses of each of these bodies.
 
 In few words, this problem consists in finding mathematical solutions to differential equations with well chosen initial conditions. 
-These differential equations describe the movements of three bodies attracting each other under the effect of gravity.
-The goal is to get something like this:
+These differential equations describe the movements of three bodies attracting each other under the effect of gravity. \
+
+The goal is to get something like this in motion (gif or mp4):
 
 ![image](https://user-images.githubusercontent.com/78499945/112620163-70f6f180-8e28-11eb-8479-599305bcabf4.png)
