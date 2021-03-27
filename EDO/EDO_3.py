@@ -54,11 +54,13 @@ z_i1,z_i2,z_i3,v_z1i,v_z2i,v_z3i])     # Initial positions and velocities
 
 @jit(nopython=True)
 def distance(X, Y):
+    """Calculate distance between two bodies"""
     return math.sqrt(np.sum((X-Y)**2))
 
 
 @jit(nopython=True)
 def f(r, t):
+     """Return the derivative of differential equation system"""
 
     x1 = r[0]       
     y1 = r[1]
@@ -113,7 +115,6 @@ def f(r, t):
                    dr13, dr14, dr15, dr16, dr17, dr18])
 
 
-
     return dr
 
 
@@ -123,7 +124,7 @@ print('Pas =',h)
 
 @jit(nopython=True)
 def iter(t_upper):
-
+    """Return the coordinates of the trajectories of three bodies"""
 
     r = np.array([x_i1, y_i1, v_x1i, v_y1i, x_i2,
     y_i2, v_x2i, v_y2i, x_i3, y_i3, v_x3i, v_y3i, 
@@ -203,5 +204,4 @@ def iter(t_upper):
     return x_pnts1,y_pnts1,x_pnts2,y_pnts2,x_pnts3,y_pnts3,z_pnts1,z_pnts2,z_pnts3
 
   
-
 x_pnts1, y_pnts1,x_pnts2,y_pnts2,x_pnts3,y_pnts3,z_pnts1,z_pnts2,z_pnts3 = iter(t_upper)
