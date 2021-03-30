@@ -10,6 +10,7 @@ import matplotlib.animation as animation
 from PIL import Image
 
 
+
 G = 6.67e-11               # Gravitational constant
 m3 = 1.989e+30             # mass of the sun
 m1 = 5.972e+24             # mass of planet 1 (Earth)
@@ -58,9 +59,10 @@ def distance(X, Y):
     return math.sqrt(np.sum((X-Y)**2))
 
 
+
 @jit(nopython=True)
 def f(r, t):
-     """Return the derivative of differential equation system"""
+    """Return the derivative of differential equation system"""
 
     x1 = r[0]       
     y1 = r[1]
@@ -90,16 +92,19 @@ def f(r, t):
 
     dr1 = v_x1
     dr2 = v_y1
+    
     dr3 = (G*m2/distance(r1,r2)**3)*(x2-x1) + (G*m3/distance(r1,r3)**3)*(x3-x1)
     dr4 = (G*m2/distance(r1,r2)**3)*(y2-y1) + (G*m3/distance(r1,r3)**3)*(y3-y1)
 
     dr5 = v_x2
     dr6 = v_y2
+
     dr7 = (G*m1/distance(r1,r2)**3)*(x1-x2) + (G*m3/distance(r2,r3)**3)*(x3-x2)
     dr8 = (G*m1/distance(r1,r2)**3)*(y1-y2) + (G*m3/distance(r2,r3)**3)*(y3-y2)
 
     dr9 = v_x3
     dr10 = v_y3
+
     dr11 = (G*m1/distance(r1,r3)**3)*(x1-x3) + (G*m2/distance(r2,r3)**3)*(x2-x3)
     dr12 = (G*m1/distance(r1,r3)**3)*(y1-y3) + (G*m2/distance(r2,r3)**3)*(y2-y3)
 
@@ -154,6 +159,7 @@ def iter(t_upper):
     z_pnts1 = [z_i1]
     z_pnts2 = [z_i2]
     z_pnts3 = [z_i3]
+    
     v_z_pnts1 = [v_z1i]
     v_z_pnts2 = [v_z2i]
     v_z_pnts3 = [v_z3i]
@@ -204,4 +210,4 @@ def iter(t_upper):
     return x_pnts1,y_pnts1,x_pnts2,y_pnts2,x_pnts3,y_pnts3,z_pnts1,z_pnts2,z_pnts3
 
   
-x_pnts1, y_pnts1,x_pnts2,y_pnts2,x_pnts3,y_pnts3,z_pnts1,z_pnts2,z_pnts3 = iter(t_upper)
+# x_pnts1, y_pnts1,x_pnts2,y_pnts2,x_pnts3,y_pnts3,z_pnts1,z_pnts2,z_pnts3 = iter(t_upper)
