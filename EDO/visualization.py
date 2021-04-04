@@ -6,6 +6,10 @@ import EDO_3 as edo
 import imageio
 from pathlib import Path
 import os
+from matplotlib.patches import FancyArrowPatch, Circle
+import mpl_toolkits.mplot3d.art3d as art3d
+
+
 
 
 t_upper = 3600*24*687
@@ -14,6 +18,7 @@ x_pnts1, y_pnts1,x_pnts2,y_pnts2,x_pnts3,y_pnts3,z_pnts1,z_pnts2,z_pnts3 = edo.i
 
 
 t = 0
+
 
 while t < len(x_pnts1):
 
@@ -26,9 +31,18 @@ while t < len(x_pnts1):
     ax.get_proj = lambda: np.dot(p3.Axes3D.get_proj(ax), np.diag([1.6, 1.6, 0.9, 1]))
 
 
+    plane = Circle((0,0,0), a2)
+    Circle.set_color(plane,'0.9')
+    Circle.set_alpha(plane, 0.1)
+    ax.add_patch(plane)
+    art3d.pathpatch_2d_to_3d(plane, z=0, zdir="z")
+
+
+
     ax.xaxis.set_pane_color((0.06, 0.06, 0.06, 0.99))
     ax.yaxis.set_pane_color((0.1, 0.1, 0.1, 0.99))
     ax.zaxis.set_pane_color((0.1, 0.1, 0.1, 0.99))
+
 
 
     ax.plot3D(x_pnts1, y_pnts1, z_pnts1, 'white', linewidth=1, alpha=1)
@@ -52,6 +66,7 @@ while t < len(x_pnts1):
 
     ax.set_zlim3d([-1, 1])
     ax.set_zlabel('Z')
+
     
     ax.plot3D(0,0,0, 'o', markersize=40, color='darkorange')
     
@@ -64,7 +79,9 @@ while t < len(x_pnts1):
 
     t+=4000     
 
+
     plt.savefig('EDO/Images/{}.png'.format(t))
+
 
     plt.close()
 
@@ -79,7 +96,8 @@ image_list = []
 
 
 for file_name in images:
+
     image_list.append(imageio.imread(file_name))
 
 
-imageio.mimwrite('EDO/Three_body.gif', image_list, fps=10)
+imageio.mimwrite('EDO/Three_body.gif', image_list, fps=50)
