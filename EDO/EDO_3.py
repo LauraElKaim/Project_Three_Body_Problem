@@ -55,14 +55,54 @@ z_i1,z_i2,z_i3,v_z1i,v_z2i,v_z3i])     # Initial positions and velocities
 
 @jit(nopython=True)
 def distance(X, Y):
-    """Calculate distance between two bodies"""
+    """Calculate distance between two bodies
+    
+    Parameters
+    ----------
+
+    X : ndarray of shape (n,)
+    Y : ndarray of shape (n,)
+    
+    
+    """
+
+
     return math.sqrt(np.sum((X-Y)**2))
 
 
 
 @jit(nopython=True)
 def f(r, t):
-    """Return the derivative of differential equation system"""
+    """Return the derivative of differential equation system for 3 body-problem
+
+    Parameters
+    ----------
+    
+    r : ndarray of shape (n,)
+    t : scalar which represent time
+
+
+    
+    Problem
+    ----------
+
+    The systeme of equation solve is as follows:
+
+    We note ri = (xi, yi, zi) the position of the body i.
+    
+    (d^2)r1 = -Gm2*(r1-r2)/(distance(r1-r2))**3 - -Gm2*(r1-r3)/(distance(r1-r3))**3
+    (d^2)r2 = -Gm2*(r2-r3)/(distance(r2-r3))**3 - -Gm2*(r2-r1)/(distance(r2-r1))**3
+    (d^2)r3 = -Gm2*(r3-r1)/(distance(r3-r1))**3 - -Gm2*(r3-r2)/(distance(r3-r2))**3
+
+    Where (d^2)ri means the second derivative of r of body i (with respect to time),
+    G the gravitational constant, mi the mass of body i.
+
+    The equation system above, composed of 9 equations of order 2, is transformed
+    into an equation system of 9 differential equations of order 1.
+
+    
+    """
+
 
     x1 = r[0]       
     y1 = r[1]
@@ -90,6 +130,7 @@ def f(r, t):
     r2 = np.array([x2, y2, z2])
     r3 = np.array([x3, y3, z3])
 
+
     dr1 = v_x1
     dr2 = v_y1
     
@@ -116,8 +157,10 @@ def f(r, t):
     dr17 = (G*m3/distance(r2,r3)**3)*(z1-z2) + (G*m1/distance(r2,r1)**3)*(z1-z2)
     dr18 = (G*m1/distance(r1,r3)**3)*(z1-z3) + (G*m2/distance(r2,r3)**3)*(z2-z3)
 
+
     dr = np.array([dr1, dr2, dr3, dr4, dr5, dr6, dr7, dr8, dr9, dr10, dr11, dr12,
                    dr13, dr14, dr15, dr16, dr17, dr18])
+
 
 
     return dr
@@ -127,9 +170,31 @@ h = 100
 print('Pas =',h)
 
 
+
 @jit(nopython=True)
 def iter(t_upper):
-    """Return the coordinates of the trajectories of three bodies"""
+    """Return the coordinates of the trajectories of three bodies
+    
+    Parameters
+    ----------
+    t_upper : scalar, the upper bound of time.
+
+
+    Examples
+    ----------
+
+    t_upper can be put at 24*3600*365 to simulate an earth year or it can be put 
+    at  24*3600*687 to simulate a marsian year.
+
+
+    Function
+    ----------
+
+    This function uses the RK4 (Runge Kutta 4) method to solve the differential system 
+    composed of 18 equations of order 1 of the 3 body problem.
+
+    
+    """
 
     r = np.array([x_i1, y_i1, v_x1i, v_y1i, x_i2,
     y_i2, v_x2i, v_y2i, x_i3, y_i3, v_x3i, v_y3i, 
@@ -190,6 +255,7 @@ def iter(t_upper):
         v_x_pnts2.append(r[6])
         v_y_pnts2.append(r[7])
 
+
         x_pnts3.append(r[8]) 
         y_pnts3.append(r[9])    
         v_x_pnts3.append(r[10])
@@ -199,6 +265,7 @@ def iter(t_upper):
         z_pnts1.append(r[12]) 
         z_pnts2.append(r[13]) 
         z_pnts3.append(r[14]) 
+        
         v_z_pnts1.append(r[15]) 
         v_z_pnts2.append(r[16]) 
         v_z_pnts3.append(r[17]) 
