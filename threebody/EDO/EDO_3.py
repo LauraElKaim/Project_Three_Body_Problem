@@ -3,54 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 from numba import jit
-from celluloid import Camera
 from mpl_toolkits import mplot3d
 import mpl_toolkits.mplot3d.axes3d as p3
 import matplotlib.animation as animation
 from PIL import Image
-
-
-
-G = 6.67e-11               # Gravitational constant
-m3 = 1.989e+30             # mass of the sun
-m1 = 5.972e+24             # mass of planet 1 (Earth)
-m2 = 6.4185e+23            # mass of planet 2 (Mars)
-AU = 1.496e+11             # Astronomical unit
-a1 = 1.0*AU         # Distance from planet 1 to the sun
-a2 = 1.52*AU        # Distance from planet 2 to the sun
-
-
-x_i1 = a1       # initial values for planet 1 in x, y and z direction
-y_i1 = 0
-v_x1i = 0
-v_y1i = 29779.301841746023        
-z_i1 = 0
-v_z1i = 0
-
-x_i2 = a2      # initial values for planet 2 in x, y and z direction
-y_i2 = 0
-v_x2i = 0
-v_y2i = 24154.203325249873
-z_i2 = 0
-v_z2i = 0  
-
-
-x_i3 = 0       # initial values for Sun in x, y and z direction
-y_i3 = 0
-v_x3i = 0   
-v_y3i = 0  
-z_i3 = 0   
-v_z3i = 0   
-
-t = 0
-t_i = 0.0
-t_upper = 3600*24*687     # A Martian year is 687 Earth days                  
-
-
-r = np.array([x_i1, y_i1, v_x1i, v_y1i, x_i2,
-y_i2, v_x2i, v_y2i, x_i3, y_i3, v_x3i, v_y3i, 
-z_i1,z_i2,z_i3,v_z1i,v_z2i,v_z3i])     # Initial positions and velocities
-
 
 
 @jit(nopython=True)
@@ -102,6 +58,45 @@ def f(r, t):
 
     
     """
+
+    G = 6.67e-11               # Gravitational constant
+    m3 = 1.989e+30             # mass of the sun
+    m1 = 5.972e+24             # mass of planet 1 (Earth)
+    m2 = 6.4185e+23            # mass of planet 2 (Mars)
+    AU = 1.496e+11             # Astronomical unit
+    a1 = 1.0*AU         # Distance from planet 1 to the sun
+    a2 = 1.52*AU        # Distance from planet 2 to the sun
+
+
+    x_i1 = a1       # initial values for planet 1 in x, y and z direction
+    y_i1 = 0
+    v_x1i = 0
+    v_y1i = 29779.301841746023        
+    z_i1 = 0
+    v_z1i = 0
+
+    x_i2 = a2      # initial values for planet 2 in x, y and z direction
+    y_i2 = 0
+    v_x2i = 0
+    v_y2i = 24154.203325249873
+    z_i2 = 0
+    v_z2i = 0  
+
+
+    x_i3 = 0       # initial values for Sun in x, y and z direction
+    y_i3 = 0
+    v_x3i = 0   
+    v_y3i = 0  
+    z_i3 = 0   
+    v_z3i = 0   
+
+    t = 0
+
+    r = np.array([x_i1, y_i1, v_x1i, v_y1i, x_i2,
+    y_i2, v_x2i, v_y2i, x_i3, y_i3, v_x3i, v_y3i, 
+    z_i1,z_i2,z_i3,v_z1i,v_z2i,v_z3i])     # Initial positions and velocities
+
+
 
 
     x1 = r[0]       
@@ -166,9 +161,6 @@ def f(r, t):
     return dr
 
 
-h = 100
-print('Pas =',h)
-
 
 
 @jit(nopython=True)
@@ -195,6 +187,44 @@ def iter(t_upper):
 
     
     """
+    h = 100
+
+    AU = 1.496e+11             # Astronomical unit
+
+    a1 = 1.0*AU         # Distance from planet 1 to the sun
+    a2 = 1.52*AU        # Distance from planet 2 to the sun
+    
+    x_i1 = a1       # initial values for planet 1 in x, y and z direction
+    y_i1 = 0
+    v_x1i = 0
+    v_y1i = 29779.301841746023        
+    z_i1 = 0
+    v_z1i = 0
+
+    x_i2 = a2      # initial values for planet 2 in x, y and z direction
+    y_i2 = 0
+    v_x2i = 0
+    v_y2i = 24154.203325249873
+    z_i2 = 0
+    v_z2i = 0  
+
+
+    x_i3 = 0       # initial values for Sun in x, y and z direction
+    y_i3 = 0
+    v_x3i = 0   
+    v_y3i = 0  
+    z_i3 = 0   
+    v_z3i = 0   
+
+    t = 0
+    t_i = 0.0
+    t_upper = 3600*24*687     # A Martian year is 687 Earth days                  
+
+
+    r = np.array([x_i1, y_i1, v_x1i, v_y1i, x_i2,
+    y_i2, v_x2i, v_y2i, x_i3, y_i3, v_x3i, v_y3i, 
+    z_i1,z_i2,z_i3,v_z1i,v_z2i,v_z3i])     # Initial positions and velocities
+
 
     r = np.array([x_i1, y_i1, v_x1i, v_y1i, x_i2,
     y_i2, v_x2i, v_y2i, x_i3, y_i3, v_x3i, v_y3i, 
