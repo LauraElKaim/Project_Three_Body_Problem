@@ -3,8 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-.vscode/
-*.gitkeep
+__pycache__
+.vscode
+.gitkeep
+*egg-info*
+*dist*
+*build*
 
 # User-specific files
 *.rsuser
