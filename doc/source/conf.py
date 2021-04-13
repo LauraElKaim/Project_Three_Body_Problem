@@ -19,8 +19,8 @@ import sphinx_bootstrap_theme
 # -- Project information -----------------------------------------------------
 
 project = 'threebody'
-copyright = "2021, 'Mohamed Fattouhy, Amine Touzani, Gueladio Niasse, Laura El KaÃ¯m'"
-author = "'Mohamed Fattouhy, Amine Touzani, Gueladio Niasse, Laura El KaÃ¯m'"
+copyright = "2021, Mohamed Fattouhy, Amine Touzani, Gueladio Niasse, Laura El Kaim"
+author = "Mohamed Fattouhy, Amine Touzani, Gueladio Niasse, Laura El Kaim"
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
