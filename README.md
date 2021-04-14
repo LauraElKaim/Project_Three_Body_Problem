@@ -7,7 +7,7 @@
 
 </center>
 
-[![Documentation Status](https://readthedocs.org/projects/project-three-body-problem/badge/?version=latest)](https://project-three-body-problem.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/project-three-body-problem/badge/?version=main)](https://project-three-body-problem.readthedocs.io/en/latest/?badge=main)
 
 ## Authors
 
