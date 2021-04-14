@@ -1,6 +1,12 @@
 
 # Three body problem
 
+<center>
+
+![threebody](threebody/EDO/Images/threebody.png)
+
+</center>
+
 [![Documentation Status](https://readthedocs.org/projects/project-three-body-problem/badge/?version=latest)](https://project-three-body-problem.readthedocs.io/en/latest/?badge=latest)
 
 ## Authors
