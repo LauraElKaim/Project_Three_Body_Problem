@@ -1,4 +1,7 @@
-# Project: Three body problem
+
+# Three body problem
+
+[![Documentation Status](https://readthedocs.org/projects/project-three-body-problem/badge/?version=latest)](https://project-three-body-problem.readthedocs.io/en/latest/?badge=latest)
 
 ## Authors
 
@@ -6,7 +9,6 @@
 - Niasse Gueladio (gueladio.niasse@etu.umontpellier.fr)
 - Fattouhy Mohamed (mohamed.fattouhy@etu.umontpellier.fr)
 - El Kaïm Laura (laura.el-kaim@etu.umontpellier.fr)
-
 
 ## Three Body Problem
 
@@ -18,6 +20,10 @@ Here, we will be interested by the sun, mars and the earth. And our starting poi
 
 In few words, this problem consists in finding mathematical solutions to differential equations with well chosen initial conditions. 
 These differential equations describe the motions of three bodies attracting each other under the effect of gravity.
+
+## Documentation
+
+The documentation of this package is available [here](https://project-three-body-problem.readthedocs.io/en/latest/?badge=latest).
 
 ## Plan
 
