@@ -106,7 +106,7 @@ r1com_sol = r1_sol-rcom_sol
 r2com_sol = r2_sol-rcom_sol
 
 # %%
-
+%matplotlib inline
 #Create figure 
 fig = plt.figure (figsize = (15,15))
 #Créer des axes 3D 
