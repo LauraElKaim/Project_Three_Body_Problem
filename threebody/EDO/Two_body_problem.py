@@ -25,7 +25,7 @@ from matplotlib import animation
 
 #%%
 #Définir la constante de gravitation universelle 
-G = 0.0000000067 # N-m2 / kg2
+G = 6.67408e-11 # N-m2 / kg2
 # Quantités de référence 
 m_nd = 1.989e+30 #kg # masse du soleil 
 r_nd = 5.326e+12 #m # distance entre les étoiles dans Alpha Centauri 
