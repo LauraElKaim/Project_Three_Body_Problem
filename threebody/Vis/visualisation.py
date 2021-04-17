@@ -29,21 +29,21 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
 
     x1: array of shape (n, 1),
         x coordinate of body 1
-    y2: array of shape (n, 1),
+    y1: array of shape (n, 1),
         y coordinate of body 1
-    z3: array of shape (n, 1),
+    z1: array of shape (n, 1),
         z coordinate of body 1
-    x1: array of shape (n, 1),
+    x2: array of shape (n, 1),
         x coordinate of body 2
     y2: array of shape (n, 1),
         y coordinate of body 2
-    z3: array of shape (n, 1),
+    z2: array of shape (n, 1),
         z coordinate of body 2
-    x1: array of shape (n, 1),
+    x3: array of shape (n, 1),
         x coordinate of body 3
-    y1: array of shape (n, 1),
+    y3: array of shape (n, 1),
         y coordinate of body 3
-    z1: array of shape (n, 1),
+    z3: array of shape (n, 1),
         z coordinate of body 3
 
     save_path: string, default:'.' (current directory)
