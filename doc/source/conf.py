@@ -13,9 +13,9 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('c:/users/mfatt/Project_Three_body_Problem/threebody'))
 import sphinx_rtd_theme
-
+import threebody
 # -- Project information -----------------------------------------------------
 
 project = 'threebody'
@@ -26,13 +26,14 @@ author = "Mohamed Fattouhy, Amine Touzani, Gueladio Niasse, Laura El Kaim"
 release = '0.0.1'
 
 
+
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx_rtd_theme'
+    'sphinx_rtd_theme', 'sphinx.ext.autodoc',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
