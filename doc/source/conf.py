@@ -13,9 +13,8 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('c:/users/mfatt/Project_Three_body_Problem/threebody'))
+#sys.path.insert(0, os.path.abspath('.'))
 import sphinx_rtd_theme
-import threebody
 # -- Project information -----------------------------------------------------
 
 project = 'threebody'
