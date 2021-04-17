@@ -26,11 +26,13 @@ from matplotlib import animation
 #%%
 #Définir la constante de gravitation universelle 
 G = 6.67408e-11 # N-m2 / kg2
+
 # Quantités de référence 
 m_nd = 1.989e+30 #kg # masse du soleil 
 r_nd = 5.326e+12 #m # distance entre les étoiles dans Alpha Centauri 
 v_nd = 30000 # m / s # vitesse relative de la terre autour du soleil 
 t_nd = 79.91 * 365 * 24 * 3600 * 0.51 #s # période orbitale d'Alpha Centauri
+
 # Constantes nettes 
 K1 = G * t_nd * m_nd / (r_nd ** 2 * v_nd)
 K2 = v_nd * t_nd / r_nd
@@ -44,23 +46,30 @@ K2 = v_nd * t_nd / r_nd
 
 #%%
 import scipy as sp
+
 #Définir les masses 
 m1 = 1.1 #Alpha Centauri A 
 m2 = 0.907 #Alpha Centauri B
+
 #Définir les vecteurs de position initiale 
 r1 = [- 0.5,0,0] #m 
 r2 = [0.5,0,0] #m
+
 #Convertir les vecteurs pos en tableaux 
 r1 = sci.array (r1, dtype = "float64") 
 r2 = sci.array (r2, dtype = "float64")
+
 # Trouver le centre de masse 
 r_com = (m1 * r1 + m2 * r2) / (m1 + m2)
+
 #Définir les vitesses initiales 
 v1 = [0.01,0.01,0] # m / s 
 v2 = [- 0.05,0, -0.1] # m / s
+
 #Convertir les vecteurs de vitesse en tableaux 
 v1 = sci.array (v1, dtype = "float64") 
 v2 = sci.array (v2, dtype = "float64")
+
 # Trouver la vitesse de COM 
 v_com = (m1 * v1 + m2 * v2) / (m1 + m2)
 
@@ -100,8 +109,10 @@ r2_sol = two_body_sol [:, 3: 6]
 # %%
 # Trouver l'emplacement de COM 
 rcom_sol = (m1 * r1_sol + m2 * r2_sol) / (m1 + m2)
+
 # Trouver l'emplacement d'Alpha Centauri A wrt COM 
 r1com_sol = r1_sol-rcom_sol
+
 # Trouver l'emplacement d'Alpha Centauri B par COM 
 r2com_sol = r2_sol-rcom_sol
 
@@ -109,14 +120,18 @@ r2com_sol = r2_sol-rcom_sol
 %matplotlib inline
 #Create figure 
 fig = plt.figure (figsize = (15,15))
+
 #Créer des axes 3D 
 ax = fig.add_subplot (111, projection = "3d")
+
 # Tracez les orbites 
 ax.plot (r1com_sol [:, 0], r1com_sol [:, 1], r1com_sol [:, 2], color = "darkblue") 
 ax.plot (r2com_sol [:, 0], r2com_sol [:, 1], r2com_sol [:, 2], color = "red")
+
 # Tracez les positions finales des étoiles 
 ax.scatter (r1com_sol [-1,0], r1com_sol [-1,1], r1com_sol [-1,2], color = "darkblue", marker = "o", s = 100, label = "Alpha Centauri A") 
 ax.scatter (r2com_sol [-1,0], r2com_sol [-1,1], r2com_sol [-1,2], color = "red", marker = "o", s = 100, label =" Alpha Centauri B ")
+
 # Ajoutez quelques cloches et sifflets supplémentaires 
 ax.set_xlabel ("coordonnée x", fontsize = 14) 
 ax.set_ylabel ("coordonnée y", fontsize = 14) 
