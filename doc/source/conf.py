@@ -17,6 +17,9 @@ import sys
 import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
+def setup(app):
+    app.add_stylesheet(os.path.join("css","custom.css"))
+
 project = 'threebody'
 copyright = "2021, Mohamed Fattouhy, Amine Touzani, Gueladio Niasse, Laura El Kaim"
 author = "Mohamed Fattouhy, Amine Touzani, Gueladio Niasse, Laura El Kaim"
