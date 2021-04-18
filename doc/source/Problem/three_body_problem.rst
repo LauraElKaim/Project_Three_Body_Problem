@@ -7,6 +7,9 @@ The three-body problem consist in taking the initial positions and velocities of
 three bodies (planets, stars, ...) and then solving for their mutual motion according 
 to Newton's laws of motion and Newton's law of universal gravitation.
 
+So if we note `ri = (xi, yi, zi)` the position of the body i.
+We need to solve the following differential system equation. 
+
 .. math::
   
    {\displaystyle {\begin{aligned}{\ddot {\mathbf {r} }}_{\mathbf {1} }
@@ -16,5 +19,13 @@ to Newton's laws of motion and Newton's law of universal gravitation.
    {|\mathbf {r_{2}} -\mathbf {r_{1}} |^{3}}},\\{\ddot {\mathbf {r} }}_{\mathbf {3} }&=-Gm_{1}{\frac {\mathbf {r_{3}} -\mathbf {r_{1}} }
    {|\mathbf {r_{3}} -\mathbf {r_{1}} |^{3}}}-Gm_{2}{\frac {\mathbf {r_{3}} -\mathbf {r_{2}} }{|\mathbf {r_{3}} -\mathbf {r_{2}} |^{3}}}.\end{aligned}}}
 
+Where the left hand side correspond to the second derivative of position r with respect to time t.
 
 Source: https://en.wikipedia.org/wiki/Three-body_problem
+
+
+.. note::
+	 The equation system above, composed of 9 equations of order 2, 
+	 is transformed into an equation system of 18 differentials equations 
+    	 of order 1, so that it can be solved by the `RK4` method.
+
