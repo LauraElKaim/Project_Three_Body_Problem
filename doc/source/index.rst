@@ -29,6 +29,13 @@ This package was created as part of the software development course. The objecti
    
    Function/function
 
+.. toctree::
+   :maxdepth: 2
+   :Caption: Contacts and sources
+   
+   contact_sources/Contact
+   contact_sources/Sources
+
 Indices and tables
 ==================
 
