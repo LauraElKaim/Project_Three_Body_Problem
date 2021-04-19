@@ -3,7 +3,7 @@
 
 <center>
 
-![threebody](threebody/EDO/Images/threebody.png)
+![threebody](threebody/Vis/Images/Images_2/file_000.png)
 
 </center>
 
