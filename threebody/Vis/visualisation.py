@@ -241,13 +241,13 @@ class Animation():
         imageio.mimsave(self.gif_path, self.image_list, fps=self.fps)
 
 
-x_pnts1, y_pnts1, x_pnts2, y_pnts2, x_pnts3, y_pnts3, z_pnts1, z_pnts2, z_pnts3 = trajectories(h=100)
-visualisation(nbr_images=10, save_path='threebody/Vis/Image',
-                x1=x_pnts1, y1=y_pnts1, z1=z_pnts1,
-                x2=x_pnts2, y2=y_pnts2, z2=z_pnts2,
-                x3=x_pnts3, y3=y_pnts3, z3=z_pnts3)
+# x_pnts1, y_pnts1, x_pnts2, y_pnts2, x_pnts3, y_pnts3, z_pnts1, z_pnts2, z_pnts3 = trajectories(h=100)
+# visualisation(nbr_images=200, save_path='threebody/Vis/Image',
+#                 x1=x_pnts1, y1=y_pnts1, z1=z_pnts1,
+#                 x2=x_pnts2, y2=y_pnts2, z2=z_pnts2,
+#                 x3=x_pnts3, y3=y_pnts3, z3=z_pnts3)
 
 
-# gif = Animation()
-# gif(image_path=Path('threebody/Vis/Image'), fps=10,
-#     gif_path=Path('threebody/Vis/Three_body.gif'))
+gif = Animation()
+gif(image_path=Path('threebody/Vis/Image'), fps=40,
+    gif_path=Path('threebody/Vis/Three_body.gif'))
