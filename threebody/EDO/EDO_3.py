@@ -10,18 +10,24 @@ def distance(X, Y):
     """Calculate distance between two bodies
 
     :param X: coordinate of body one
-    :type X: ndarray of shape (n, )
+    :type X: ndarray of shape (n, 1)
     :param Y: coordinate of body two
-    :type Y: ndarray of shape (n, )
+    :type Y: ndarray of shape (n, 1)
 
     :return: Euclidian distance between body one and two
     :rtype: float
     """
 
+    if X.shape != (18, 1) or X.shape != (1, 18):
+        print(4)
+    if Y.shape != (18, 1) or Y.shape != (1, 18):
+        print(5)
+
     return math.sqrt(np.sum((X-Y)**2))
 
 
 def velocity(M, r, G=6.67e-11):
+
     """Return the velocity of a body
 
     :param G: Gravitanionnal constant, default = 6.67e-11
@@ -37,6 +43,16 @@ def velocity(M, r, G=6.67e-11):
     :rtype: float
     """
 
+    if M < 0:
+        return print(f"La masse donnée est négative") #mettre anglais
+        
+    if r < 0:
+        print(f"La distance donnée est négative") #mettre anglais
+    
+    if G < 0:
+        print(f"La constante gravitationnelle est négative") #mettre anglais
+        
+
     return math.sqrt(G*M/r)
 
 
@@ -45,11 +61,12 @@ def f(r, t, G=6.67e-11, AU=1.496e+11,
         m1=5.972e+24, m2=6.417e+23, m3=1.989e+30,
         a1=1.0*1.496e+11, a2=1.52*1.496e+11):
 
+
     """
     Return the derivative of differential equation system for 3 body-problem
 
     :param r: Vctor which contain positions, velocities and accelerations of three bodies
-    :type r: ndarray of shape (n, ) or shape (n, 1)
+    :type r: ndarray of shape (n, 1)
 
     :param t: Time
     :type t: float
@@ -79,6 +96,32 @@ def f(r, t, G=6.67e-11, AU=1.496e+11,
             of thre body problem
     :rtype: Vectors
     """
+
+
+    if r.shape != (18, 1):
+        print("uybjh")
+        
+    if G < 0:
+        print(f"La constante gravitationnelle est négative") #mettre anglais
+        
+    if AU < 0:
+        print(f"La  est négative") #mettre anglais
+        
+    if m1 < 0:
+        print(f"La constante gravitationnelle est négative") #mettre anglais
+        
+    if m2 < 0:
+        print(f"La constante gravitationnelle est négative") #mettre anglais
+        
+    if m3 < 0:
+        print(f"La constante gravitationnelle est négative") #mettre anglais
+        
+    if a1 < 0:
+        print(f"La constante gravitationnelle est négative") #mettre anglais
+        
+    if a2 < 0:
+        print(f"La constante gravitationnelle est négative") #mettre anglais
+        
 
     x1 = r[0]
     y1 = r[1]
@@ -183,7 +226,7 @@ def trajectories(t_upper=3600*24*687, h=100, m1=5.972e+24, m2=6.417e+23, m3=1.98
     for parameters in list_parameters:
         if parameters < 0:
             print(f'You have entered a negative parameter')
-            break
+            
 
 
     x_i1 = a1    # initial values for planet 1 in x, y and z direction
@@ -213,6 +256,7 @@ def trajectories(t_upper=3600*24*687, h=100, m1=5.972e+24, m2=6.417e+23, m3=1.98
     y_i2, v_x2i, v_y2i, x_i3, y_i3, v_x3i, v_y3i, 
     z_i1, z_i2, z_i3, v_z1i, v_z2i, v_z3i])     # Initial positions and velocities
 
+    print(r.shape)
 
     # We create vectors which will contains the trajectories
     # and velocities of each bodies
@@ -305,4 +349,4 @@ def trajectories(t_upper=3600*24*687, h=100, m1=5.972e+24, m2=6.417e+23, m3=1.98
     return x_pnts1, y_pnts1, x_pnts2, y_pnts2, x_pnts3, y_pnts3, z_pnts1, z_pnts2, z_pnts3
 
 
-x_pnts1, y_pnts1, x_pnts2, y_pnts2, x_pnts3, y_pnts3, z_pnts1, z_pnts2, z_pnts3 = trajectories(h=100)
+# x_pnts1, y_pnts1, x_pnts2, y_pnts2, x_pnts3, y_pnts3, z_pnts1, z_pnts2, z_pnts3 = trajectories(h=100)

@@ -48,16 +48,16 @@ K2 = v_nd * t_nd / r_nd
 import scipy as sp
 
 #Définir les masses 
-m1 = 1.1 #Alpha Centauri A 
-m2 = 0.907 #Alpha Centauri B
+m1 = 1.1 # Alpha Centauri A 
+m2 = 0.907 # Alpha Centauri B
 
 #Définir les vecteurs de position initiale 
 r1 = [- 0.5,0,0] #m 
 r2 = [0.5,0,0] #m
 
 #Convertir les vecteurs pos en tableaux 
-r1 = sci.array (r1, dtype = "float64") 
-r2 = sci.array (r2, dtype = "float64")
+r1 = sci.array(r1, dtype = "float64") 
+r2 = sci.array(r2, dtype = "float64")
 
 # Trouver le centre de masse 
 r_com = (m1 * r1 + m2 * r2) / (m1 + m2)
@@ -67,7 +67,7 @@ v1 = [0.01,0.01,0] # m / s
 v2 = [- 0.05,0, -0.1] # m / s
 
 #Convertir les vecteurs de vitesse en tableaux 
-v1 = sci.array (v1, dtype = "float64") 
+v1 = sci.array (v1, dtype="float64") 
 v2 = sci.array (v2, dtype = "float64")
 
 # Trouver la vitesse de COM 
