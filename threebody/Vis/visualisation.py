@@ -1,14 +1,9 @@
 from threebody.EDO.EDO_3 import trajectories
 import numpy as np
-from random import randint
 import matplotlib.pyplot as plt
-from mpl_toolkits import mplot3d
 import mpl_toolkits.mplot3d.axes3d as p3
 import imageio
-from matplotlib.patches import FancyArrowPatch, Circle
-import mpl_toolkits.mplot3d.art3d as art3d
 from path import Path
-import time
 import os.path
 
 
@@ -16,38 +11,41 @@ import os.path
 def visualisation(nbr_images, save_path, x1, y1, z1,
                     x2, y2, z2, x3, y3, z3):
 
-    """Create figures of the trajectories and orbits
-    of each body and save them in Images directory
+    """
+    Create figures of the trajectories and orbits of each body and save them in Images directory
 
+    :param nbr_images: The number of image (png file) to make the visualisation
+    :type nbr_image: integer
 
-    Parameters
-    ----------
+    :param x1: x coordinate of body 1
+    :type x1: vector of shape (n,) or (n,1)
 
-    t_max: scalar,
-        The number of point to plot in the figure to reprensent
-        the trajectories of each bodies
+    :param y1: y coordinate of body 1
+    :type y1: vector of shape (n,) or (n,1)
 
-    x1: array of shape (n, 1),
-        x coordinate of body 1
-    y1: array of shape (n, 1),
-        y coordinate of body 1
-    z1: array of shape (n, 1),
-        z coordinate of body 1
-    x2: array of shape (n, 1),
-        x coordinate of body 2
-    y2: array of shape (n, 1),
-        y coordinate of body 2
-    z2: array of shape (n, 1),
-        z coordinate of body 2
-    x3: array of shape (n, 1),
-        x coordinate of body 3
-    y3: array of shape (n, 1),
-        y coordinate of body 3
-    z3: array of shape (n, 1),
-        z coordinate of body 3
+    :param z1: x coordinate of body 1
+    :type z1: vector of shape (n,) or (n,1)
 
-    save_path: string, default:'.' (current directory)
-        path in which you want to save the images
+    :param x2: x coordinate of body 2
+    :type x2: vector of shape (n,) or (n,1)  
+
+    :param y2: y coordinate of body 2
+    :type y2: vector of shape (n,) or (n,1)  
+    
+    :param z2: z coordinate of body 2
+    :type z2: vector of shape (n,) or (n,1)  
+
+    :param x3: x coordinate of body 3
+    :type x3: vector of shape (n,) or (n,1)  
+
+    :param y3: y coordinate of body 3
+    :type y3: vector of shape (n,) or (n,1)  
+    
+    :param z3: z coordinate of body 3
+    :type z3: vector of shape (n,) or (n,1)  
+
+    :param save_path: path in which you want to save the images, default: ' . ' (current directory)
+    :type save_path: str
     """
 
     nbr_images = round(len(x1)/nbr_images)
@@ -68,8 +66,7 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
         ax = p3.Axes3D(fig)
 
         ax.set_axis_off()
-        # ax.set_facecolor('#202321')
-        # ax.set_facecolor('#08143E')
+
         ax.set_facecolor('#071235')
 
         ax.view_init(elev=18)
@@ -78,17 +75,6 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
                         np.diag([1.6, 1.6, 0.9, 1]))
 
 
-        # We create a circle of radius 1.52*1.496e+11, which
-        # correspond to the distance of mars from sun
-
-        # plane = Circle((0,0,0), 1.52*1.496e+11)
-        # Circle.set_color(plane,'0.9')
-        # Circle.set_alpha(plane, 0.1)
-
-
-        # ax.add_patch(plane)
-
-        # art3d.pathpatch_2d_to_3d(plane, z=0, zdir="z")
 
         # We plot the stars in different colors
         ax.scatter(X, Y, Z, s=0.1, marker='x', c='white')
@@ -134,7 +120,8 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
         ax.plot(x1[t], y1[t], z1[t], 'o',
                 markersize=7, color='darkblue')
         ax.plot(x2[t], y2[t], z2[t], 'o', 
-                markersize=5, color='darkred')  
+                markersize=5, color='darkred')
+        
 
         for t_month in l_month:
 
@@ -167,7 +154,7 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
 
         # We save the figure as png file to make gif later
         plt.savefig(save_path + '/file_{:03}.png'.format(i),
-                    bbox_inches = 'tight', pad_inches = 0)
+                    bbox_inches='tight', pad_inches=0)
 
         i += 1
 
@@ -192,32 +179,22 @@ class Animation():
         print("Instance Created, you will create a gif.")
 
 
-
     def __call__(self, image_path, fps, gif_path):
 
 
         """This function create a gif from a list of png file
 
-        Parameters
-        -----------
+        :param image_path: Path of the list of png files to create the gif
+        :type imag_path: str
 
-        image_path: string (path),
-            indicates where to find the list of png files to create the gif
+        :param fps: Frames per second for the gif 
+        :type fps: integer
 
-        fps: integer,
-            the fps (frames per second) for the gif
+        :param gif_path: The path where to put the gif created
+        :type gif_path: str
 
-        gif_path: string (path),
-            where to put the gif created
-
-
-        Example
-        ---------
-
-        >>> from threebody import Animation
-        >>> gif = Animationf()
-        >>> gif(image_path=Path('threebody/EDO/Images'), fps=15,
-        gif_path=Path('threebody/EDO/Three_body.gif'))
+        :return: A gif to visualize the three body problem
+        :rtype: .gif
         """
 
         self.image_path = image_path
@@ -229,7 +206,7 @@ class Animation():
 
         # We test if the path where the png files are located exist or not
         # If not, we raise an error
-        try: 
+        try:
             assert os.path.exists(self.image_path)
 
         except Exception as error:
@@ -260,16 +237,16 @@ class Animation():
 
             self.image_list.append(imageio.imread(file_name))
 
-
         # We create a gif and save them in gif_path path
         imageio.mimsave(self.gif_path, self.image_list, fps=self.fps)
 
 
 x_pnts1, y_pnts1, x_pnts2, y_pnts2, x_pnts3, y_pnts3, z_pnts1, z_pnts2, z_pnts3 = trajectories(h=100)
-visualisation(nbr_images=80, save_path='threebody/Vis/Image',
+visualisation(nbr_images=10, save_path='threebody/Vis/Image',
                 x1=x_pnts1, y1=y_pnts1, z1=z_pnts1,
                 x2=x_pnts2, y2=y_pnts2, z2=z_pnts2,
                 x3=x_pnts3, y3=y_pnts3, z3=z_pnts3)
+
 
 # gif = Animation()
 # gif(image_path=Path('threebody/Vis/Image'), fps=10,
