@@ -4,6 +4,17 @@ Explanation functions
 All the functions of threebody package and twobody
 ---------------------------------------
 
+.. automodule:: twobody.EDo
+
+.. autofunction EDO.Two_body_problem.fonction
+
+.. note::
+         TwoBodyEquations
+This function takes in an array containing all the dependent variables 
+(here the position and the speed) and an array containing all the 
+independent variables (here the time) in that order. It returns the values
+of all the differentials in an array
+
 .. automodule:: threebody.EDO
 
 .. autofunction:: EDO.EDO_3.distance
