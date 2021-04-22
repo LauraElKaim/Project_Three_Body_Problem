@@ -8,6 +8,10 @@
 *egg-info*
 *dist*
 *build*
+*.aux
+*.out
+*.tex
+*.log
 
 # User-specific files
 *.rsuser
