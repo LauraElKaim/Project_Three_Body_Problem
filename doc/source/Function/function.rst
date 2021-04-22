@@ -1,7 +1,7 @@
 Explanation functions
 ======================
 
-All the functions of threebody package
+All the functions of threebody package and twobody
 ---------------------------------------
 
 .. automodule:: threebody.EDO
