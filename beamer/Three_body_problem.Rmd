@@ -1,0 +1,40 @@
+---
+title: '**Three body problem**'
+subtitle: "HMMA238 - Developpement logiciel"
+author:
+  - Mohamed Fattouhy
+  - Amine Touzani
+  - Gueladio Niasse
+  - Laura El Kaïm
+institute: "Faculté des Sciences - Université de Montpellier"
+date: "25/04/2021"
+header-includes: \usepackage[french]{babel}
+output: 
+  beamer_presentation:
+    slide_level: 2
+---
+
+## Présentation du problème
+
+But :  
+- Résoudre le problème à $3$ corps,  
+- Produire un gif représentant le mouvement du Soleil, de la Terre et Mars, en $3$ dimensions.  
+
+
+## Équations différentielles
+
+$${\displaystyle {\begin{aligned}{\ddot {\mathbf {r} }}_{\mathbf {1} }
+   &=-Gm_{2}{\frac {\mathbf {r_{1}} -\mathbf {r_{2}} }{|\mathbf {r_{1}} -\mathbf {r_{2}} |^{3}}}-Gm_{3}{\frac {\mathbf {r_{1}} -\mathbf {r_{3}} }
+   {|\mathbf {r_{1}} -\mathbf {r_{3}} |^{3}}},\\{\ddot {\mathbf {r} }}_{\mathbf {2} }
+   &=-Gm_{3}{\frac {\mathbf {r_{2}} -\mathbf {r_{3}} }{|\mathbf {r_{2}} -\mathbf {r_{3}} |^{3}}}-Gm_{1}{\frac {\mathbf {r_{2}} -\mathbf {r_{1}} }
+   {|\mathbf {r_{2}} -\mathbf {r_{1}} |^{3}}},\\{\ddot {\mathbf {r} }}_{\mathbf {3} }&=-Gm_{1}{\frac {\mathbf {r_{3}} -\mathbf {r_{1}} }
+   {|\mathbf {r_{3}} -\mathbf {r_{1}} |^{3}}}-Gm_{2}{\frac {\mathbf {r_{3}} -\mathbf {r_{2}} }{|\mathbf {r_{3}} -\mathbf {r_{2}} |^{3}}}.\end{aligned}}}$$
+
+
+## Three Body Problem
+
+![](Images/file_000.png)
+
+## Autre exemple : deux corps
+
+
