@@ -5,11 +5,13 @@ import mpl_toolkits.mplot3d.axes3d as p3
 import imageio
 from path import Path
 import os.path
+import moviepy.editor as mp
 
 
 
 def visualisation(nbr_images, save_path, x1, y1, z1,
-                    x2, y2, z2, x3, y3, z3):
+   x2, y2, z2, x3, y3, z3):
+
 
     """
     Create figures of the trajectories and orbits of each body and save them in Images directory
@@ -27,24 +29,24 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
     :type z1: vector of shape (n,) or (n,1)
 
     :param x2: x coordinate of body 2
-    :type x2: vector of shape (n,) or (n,1)  
+    :type x2: vector of shape (n,) or (n,1)
 
     :param y2: y coordinate of body 2
-    :type y2: vector of shape (n,) or (n,1)  
-    
+    :type y2: vector of shape (n,) or (n,1)
+
     :param z2: z coordinate of body 2
-    :type z2: vector of shape (n,) or (n,1)  
+    :type z2: vector of shape (n,) or (n,1)
 
     :param x3: x coordinate of body 3
-    :type x3: vector of shape (n,) or (n,1)  
+    :type x3: vector of shape (n,) or (n,1)
 
     :param y3: y coordinate of body 3
-    :type y3: vector of shape (n,) or (n,1)  
+    :type y3: vector of shape (n,) or (n,1)
     
     :param z3: z coordinate of body 3
-    :type z3: vector of shape (n,) or (n,1)  
+    :type z3: vector of shape (n,) or (n,1)
 
-    :param save_path: path in which you want to save the images, default: ' . ' (current directory)
+    :param save_path: path in which you want to save the images, default: '.' (current directory)
     :type save_path: str
     """
 
@@ -82,7 +84,7 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
         ax.scatter(-1*X, -1*Y, -1*Z, s=0.1, marker='x', c='darkorange')
         ax.scatter(-1*X, -0.5*Y, Z, s=0.1, marker='x', c='purple')
 
-
+       
         ax.xaxis.set_pane_color((0.06, 0.06, 0.06, 0.99))
         ax.yaxis.set_pane_color((0.1, 0.1, 0.1, 0.99))
         ax.zaxis.set_pane_color((0.1, 0.1, 0.1, 0.99))
@@ -121,7 +123,7 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
                 markersize=7, color='darkblue')
         ax.plot(x2[t], y2[t], z2[t], 'o', 
                 markersize=5, color='darkred')
-        
+
 
         for t_month in l_month:
 
@@ -133,7 +135,7 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
                         boxstyle='round,pad=0.6'))
 
 
-        #Add legend
+        # Add legend
         ax.text(-2.7e+11, 0, 9000, 'Sun', c='white', fontsize=8,
                         bbox=dict(facecolor='darkorange', edgecolor='white',
                         boxstyle='circle,pad=0.5'))
@@ -165,14 +167,16 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
 
 class Animation():
 
-    """This class was made to create gif to represent
+    """
+    This class was made to create gif to represent
     tajectories of our three bodies in 3D dimension,
     from an image list of png.
     """
 
     def __init__(self):
 
-        """We specify to the user that the instance was created
+        """
+        We specify to the user that the instance was created
         and that he is about to create a gif
         """
 
@@ -242,12 +246,24 @@ class Animation():
 
 
 # x_pnts1, y_pnts1, x_pnts2, y_pnts2, x_pnts3, y_pnts3, z_pnts1, z_pnts2, z_pnts3 = trajectories(h=100)
-# visualisation(nbr_images=200, save_path='threebody/Vis/Image',
-#                 x1=x_pnts1, y1=y_pnts1, z1=z_pnts1,
-#                 x2=x_pnts2, y2=y_pnts2, z2=z_pnts2,
-#                 x3=x_pnts3, y3=y_pnts3, z3=z_pnts3)
 
 
-gif = Animation()
-gif(image_path=Path('threebody/Vis/Image'), fps=40,
-    gif_path=Path('threebody/Vis/Three_body.gif'))
+def ConvertGif(gif_path, save_path):
+
+    """
+    Convert a gif to mp4
+
+    :param gif_path: The path where the gif is located
+    :type gif_path: str
+
+    :param save_path: The path where to put the video created
+    :type save_path: str
+
+    :return: A video to visualize the three body problem
+    :rtype: .mp4
+
+    """
+
+    clip = mp.VideoFileClip(gif_path)
+
+    return clip.write_videofile(save_path)
