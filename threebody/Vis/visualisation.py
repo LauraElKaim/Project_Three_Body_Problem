@@ -25,7 +25,7 @@ def visualisation(nbr_images, save_path, x1, y1, z1,
     :param y1: y coordinate of body 1
     :type y1: vector of shape (n,) or (n,1)
 
-    :param z1: x coordinate of body 1
+    :param z1: z coordinate of body 1
     :type z1: vector of shape (n,) or (n,1)
 
     :param x2: x coordinate of body 2
