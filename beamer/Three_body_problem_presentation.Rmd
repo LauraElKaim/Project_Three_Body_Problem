@@ -31,7 +31,7 @@ output:
 - Conclusion  
 
 
-# Résolution mathématique
+# Résolutions mathématiques
 
 ## Première approche : Alpha Centauri A et Alpha Centauri B
 
@@ -54,14 +54,18 @@ $${\displaystyle {\begin{aligned}{\ddot {\mathbf {r} }}_{\mathbf {1} }
 
 ## Alpha Centauri A et Alpha Centauri B
 
-![](Images/Img.png)
+\center
+
+![](Images/Img.png){width=75%}
 
 ## Trajectoires de la Terre et de Mars autour du soleil
 
-![](Images/orbite.jpg)
+\center
 
+![](Images/orbite.jpg){width=75%}
 
 ## Problème à 3 corps
 
-![](Images/file_000.png)
+\center
 
+![](Images/file_000.png){width=75%}
