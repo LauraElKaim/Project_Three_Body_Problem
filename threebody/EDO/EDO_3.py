@@ -16,19 +16,17 @@ def distance(X, Y):
 
     :return: Euclidian distance between body one and two
     :rtype: float
-    """
 
-    if X.shape != (18, 1) or X.shape != (1, 18):
-        print(4)
-    if Y.shape != (18, 1) or Y.shape != (1, 18):
-        print(5)
+    """
 
     return math.sqrt(np.sum((X-Y)**2))
 
 
+@jit(nopython=True)
 def velocity(M, r, G=6.67e-11):
 
-    """Return the velocity of a body
+    """
+    Return the velocity of a body
 
     :param G: Gravitanionnal constant, default = 6.67e-11
     :rtype: float
@@ -45,27 +43,27 @@ def velocity(M, r, G=6.67e-11):
 
     if M < 0:
         return print(f"La masse donnée est négative") #mettre anglais
-        
+
     if r < 0:
         print(f"La distance donnée est négative") #mettre anglais
-    
+
     if G < 0:
         print(f"La constante gravitationnelle est négative") #mettre anglais
-        
 
-    return math.sqrt(G*M/r)
+
+    return np.sqrt(G*M/r)
 
 
 @jit(nopython=True)
-def f(r, t, G=6.67e-11, AU=1.496e+11,
-        m1=5.972e+24, m2=6.417e+23, m3=1.989e+30,
-        a1=1.0*1.496e+11, a2=1.52*1.496e+11):
+def derivative(r, t, G=6.67e-11, AU=1.496e+11,
+                m1=5.972e+24, m2=6.417e+23, m3=1.989e+30,
+                a1=1.0*1.496e+11, a2=1.52*1.496e+11):
 
 
     """
     Return the derivative of differential equation system for 3 body-problem
 
-    :param r: Vctor which contain positions, velocities and accelerations of three bodies
+    :param r: Vector which contain positions, velocities and accelerations of three bodies
     :type r: ndarray of shape (n, 1)
 
     :param t: Time
@@ -97,31 +95,27 @@ def f(r, t, G=6.67e-11, AU=1.496e+11,
     :rtype: Vectors
     """
 
-
-    if r.shape != (18, 1):
-        print("uybjh")
-        
     if G < 0:
         print(f"La constante gravitationnelle est négative") #mettre anglais
-        
+
     if AU < 0:
         print(f"La  est négative") #mettre anglais
-        
+
     if m1 < 0:
         print(f"La constante gravitationnelle est négative") #mettre anglais
-        
+
     if m2 < 0:
         print(f"La constante gravitationnelle est négative") #mettre anglais
-        
+
     if m3 < 0:
         print(f"La constante gravitationnelle est négative") #mettre anglais
-        
+
     if a1 < 0:
         print(f"La constante gravitationnelle est négative") #mettre anglais
-        
+
     if a2 < 0:
         print(f"La constante gravitationnelle est négative") #mettre anglais
-        
+
 
     x1 = r[0]
     y1 = r[1]
@@ -220,13 +214,15 @@ def trajectories(t_upper=3600*24*687, h=100, m1=5.972e+24, m2=6.417e+23, m3=1.98
     """
 
     # We check if parameters are all positive
+
     list_parameters = [t_upper, h, m1, m2, m3,
                         a1, a2]
 
     for parameters in list_parameters:
+
         if parameters < 0:
             print(f'You have entered a negative parameter')
-            
+
 
 
     x_i1 = a1    # initial values for planet 1 in x, y and z direction
@@ -239,7 +235,7 @@ def trajectories(t_upper=3600*24*687, h=100, m1=5.972e+24, m2=6.417e+23, m3=1.98
     x_i2 = a2     # initial values for planet 2 in x, y and z direction
     y_i2 = 0
     v_x2i = 0
-    v_y2i = 24154.203325249873
+    v_y2i = 24154.203325249873   
     z_i2 = 0
     v_z2i = 0
 
@@ -256,7 +252,6 @@ def trajectories(t_upper=3600*24*687, h=100, m1=5.972e+24, m2=6.417e+23, m3=1.98
     y_i2, v_x2i, v_y2i, x_i3, y_i3, v_x3i, v_y3i, 
     z_i1, z_i2, z_i3, v_z1i, v_z2i, v_z3i])     # Initial positions and velocities
 
-    print(r.shape)
 
     # We create vectors which will contains the trajectories
     # and velocities of each bodies
@@ -302,14 +297,14 @@ def trajectories(t_upper=3600*24*687, h=100, m1=5.972e+24, m2=6.417e+23, m3=1.98
     for t in range(0, t_upper, h):
 
         # We used the RK4 formula here
-        k1 = h*f(r=r, t=0,  m1=5.972e+24, m2=6.417e+23, m3=1.989e+30, 
-                a1=1.0*1.496e+11, a2=1.52*1.496e+11)
-        k2 = h*f(r=r + 0.5*k1, t=t + (h/2),  m1=5.972e+24, m2=6.417e+23,
-                m3=1.989e+30, a1=1.0*1.496e+11, a2=1.52*1.496e+11)
-        k3 = h*f(r=r + 0.5*k2, t=t + (h/2),  m1=5.972e+24, m2=6.417e+23, 
-                m3=1.989e+30, a1=1.0*1.496e+11, a2=1.52*1.496e+11)
-        k4 = h*f(r=r + h*k3, t=t+h,  m1=5.972e+24, m2=6.417e+23, 
-                m3=1.989e+30, a1=1.0*1.496e+11, a2=1.52*1.496e+11)
+        k1 = h*derivative(r=r, t=0,  m1=5.972e+24, m2=m2, m3=1.989e+30, 
+                            a1=a1, a2=1.52*1.496e+11)
+        k2 = h*derivative(r=r + 0.5*k1, t=t + (h/2),  m1=5.972e+24, m2=6.417e+23,
+                            m3=1.989e+30, a1=1.0*1.496e+11, a2=1.52*1.496e+11)
+        k3 = h*derivative(r=r + 0.5*k2, t=t + (h/2),  m1=5.972e+24, m2=6.417e+23, 
+                            m3=1.989e+30, a1=1.0*1.496e+11, a2=1.52*1.496e+11)
+        k4 = h*derivative(r=r + h*k3, t=t+h,  m1=5.972e+24, m2=6.417e+23, 
+                            m3=1.989e+30, a1=1.0*1.496e+11, a2=1.52*1.496e+11)
 
         # We calculate the new vector r
         r += (k1 + 2*k2 + 2*k3 + k4)*(1.0/6.0)
@@ -349,4 +344,4 @@ def trajectories(t_upper=3600*24*687, h=100, m1=5.972e+24, m2=6.417e+23, m3=1.98
     return x_pnts1, y_pnts1, x_pnts2, y_pnts2, x_pnts3, y_pnts3, z_pnts1, z_pnts2, z_pnts3
 
 
-# x_pnts1, y_pnts1, x_pnts2, y_pnts2, x_pnts3, y_pnts3, z_pnts1, z_pnts2, z_pnts3 = trajectories(h=100)
+# x_pnts1, y_pnts1, x_pnts2, y_pnts2, x_pnts3, y_pnts3, z_pnts1, z_pnts2, z_pnts3 = trajectories(h=100000)
