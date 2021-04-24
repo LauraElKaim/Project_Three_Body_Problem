@@ -55,3 +55,18 @@ In physic's problem, t represent generally the time, this is the case for three 
 
 .. autoclass:: Vis.visualisation.Animation
    :members: __call__
+
+Saturne_Mercure_Sun_problem's function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: EDO.Saturne_Mercure_Sun_problem.init
+
+.. autofunction:: EDO.Saturne_Mercure_Sun_problem.Force_S_Sun
+
+.. autofunction:: EDO.Saturne_Mercure_Sun_problem.Force_M_Sun
+
+.. autofunction:: EDO.Saturne_Mercure_Sun_problem.Force_S_M
+
+.. autofunction:: EDO.Saturne_Mercure_Sun_problem.Force
+
+.. autofunction:: EDO.Saturne_Mercure_Sun_problem.Euler
