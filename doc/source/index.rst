@@ -48,7 +48,7 @@ This package was created as part of the software development course. The objecti
    :maxdepth: 2
    :Caption: Some examples
 
-    Examples/Examples
+   Examples/Examples
 
 Indices and tables
 ==================
