@@ -146,37 +146,28 @@ def derivative(r, t, G=6.67e-11, AU=1.496e+11,
     dr1 = v_x1
     dr2 = v_y1
 
-    dr3 = (G*m2/distance(r1, r2)**3)*(x2-x1)
-           + (G*m3/distance(r1, r3)**3)*(x3-x1)
-    dr4 = (G*m2/distance(r1, r2)**3)*(y2-y1)
-           + (G*m3/distance(r1, r3)**3)*(y3-y1)
+    dr3 = (G*m2/distance(r1, r2)**3)*(x2-x1) + (G*m3/distance(r1, r3)**3)*(x3-x1)
+    dr4 = (G*m2/distance(r1, r2)**3)*(y2-y1) + (G*m3/distance(r1, r3)**3)*(y3-y1)
 
     dr5 = v_x2
     dr6 = v_y2
 
-    dr7 = (G*m1/distance(r1, r2)**3)*(x1-x2)
-           + (G*m3/distance(r2, r3)**3)*(x3-x2)
-    dr8 = (G*m1/distance(r1, r2)**3)*(y1-y2)
-           + (G*m3/distance(r2, r3)**3)*(y3-y2)
+    dr7 = (G*m1/distance(r1, r2)**3)*(x1-x2) + (G*m3/distance(r2, r3)**3)*(x3-x2)
+    dr8 = (G*m1/distance(r1, r2)**3)*(y1-y2) + (G*m3/distance(r2, r3)**3)*(y3-y2)
 
     dr9 = v_x3
     dr10 = v_y3
 
-    dr11 = (G*m1/distance(r1, r3)**3)*(x1-x3)
-            + (G*m2/distance(r2, r3)**3)*(x2-x3)
-    dr12 = (G*m1/distance(r1, r3)**3)*(y1-y3)
-            + (G*m2/distance(r2, r3)**3)*(y2-y3)
+    dr11 = (G*m1/distance(r1, r3)**3)*(x1-x3) + (G*m2/distance(r2, r3)**3)*(x2-x3)
+    dr12 = (G*m1/distance(r1, r3)**3)*(y1-y3) + (G*m2/distance(r2, r3)**3)*(y2-y3)
 
     dr13 = v_z1
     dr14 = v_z2
     dr15 = v_z3
 
-    dr16 = (G*m2/distance(r1, r2)**3)*(z2-z2)
-            + (G*m3/distance(r1, r3)**3)*(z3-z1)
-    dr17 = (G*m3/distance(r2, r3)**3)*(z1-z2)
-            + (G*m1/distance(r2, r1)**3)*(z1-z2)
-    dr18 = (G*m1/distance(r1, r3)**3)*(z1-z3)
-            + (G*m2/distance(r2, r3)**3)*(z2-z3)
+    dr16 = (G*m2/distance(r1, r2)**3)*(z2-z2) + (G*m3/distance(r1, r3)**3)*(z3-z1)
+    dr17 = (G*m3/distance(r2, r3)**3)*(z1-z2) + (G*m1/distance(r2, r1)**3)*(z1-z2)
+    dr18 = (G*m1/distance(r1, r3)**3)*(z1-z3) + (G*m2/distance(r2, r3)**3)*(z2-z3)
 
     dr = np.array([dr1, dr2, dr3, dr4, dr5, dr6,
                    dr7, dr8, dr9, dr10, dr11, dr12,
@@ -305,7 +296,7 @@ def trajectories(t_upper=3600*24*687, h=100, m1=5.972e+24, m2=6.417e+23,
         k2 = h*derivative(r=r + 0.5*k1, t=t + (h/2), m1=5.972e+24,
                           m2=6.417e+23, m3=1.989e+30, a1=1.0*1.496e+11,
                           a2=1.52*1.496e+11)
-        k3 = h*derivative(r=r + 0.5*k2, t=t + (h/2), m1=5.972e+24
+        k3 = h*derivative(r=r + 0.5*k2, t=t + (h/2), m1=5.972e+24,
                           m2=6.417e+23, m3=1.989e+30, a1=1.0*1.496e+11,
                           a2=1.52*1.496e+11)
         k4 = h*derivative(r=r + h*k3, t=t+h, m1=5.972e+24, m2=6.417e+23,
