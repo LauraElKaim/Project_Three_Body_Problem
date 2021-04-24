@@ -1,19 +1,10 @@
-Explanation functions
+Exlanation functions
 ======================
 
 All the functions of threebody package
 ---------------------------------------
 
-.. automodule:: twobody.EDo
 
-.. autofunction EDO.Two_body_problem.fonction
-
-.. note::
-         TwoBodyEquations
-This function takes in an array containing all the dependent variables 
-(here the position and the speed) and an array containing all the 
-independent variables (here the time) in that order. It returns the values
-of all the differentials in an array
 
 .. automodule:: threebody.EDO
 
@@ -59,14 +50,29 @@ In physic's problem, t represent generally the time, this is the case for three 
 Saturne_Mercure_Sun_problem's function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: EDO.Saturne_Mercure_Sun_problem.init
+.. autofunction:: EDO.Saturne_Mercure_Sun.init
 
-.. autofunction:: EDO.Saturne_Mercure_Sun_problem.Force_S_Sun
+.. autofunction:: EDO.Saturne_Mercure_Sun.Force_S_Sun
 
-.. autofunction:: EDO.Saturne_Mercure_Sun_problem.Force_M_Sun
+.. autofunction:: EDO.Saturne_Mercure_Sun.Force_M_Sun
 
-.. autofunction:: EDO.Saturne_Mercure_Sun_problem.Force_S_M
+.. autofunction:: EDO.Saturne_Mercure_Sun.Force_S_M
 
-.. autofunction:: EDO.Saturne_Mercure_Sun_problem.Force
+.. autofunction:: EDO.Saturne_Mercure_Sun.Force
 
-.. autofunction:: EDO.Saturne_Mercure_Sun_problem.Euler
+.. autofunction:: EDO.Saturne_Mercure_Sun.Euler
+
+
+--------------------------------------------------------------------
+
+Two_body_problem
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction EDO.Two_body_problem.TwoBodyEquations
+
+.. note::
+         TwoBodyEquations
+	 This function takes in an array containing all the dependent variables
+	 (here the position and the speed) and an array containing all the
+	 independent variables (here the time) in that order. It returns the values
+	 of all the differentials in an array
