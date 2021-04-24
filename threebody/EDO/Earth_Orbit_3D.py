@@ -163,3 +163,5 @@ def Earth_Orbit(save_anim=False, fps=24, save_as_mp4=False):
 
 
     plt.show()
+
+Earth_Orbit(save_anim=True)
