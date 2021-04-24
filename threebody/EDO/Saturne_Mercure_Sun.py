@@ -346,12 +346,9 @@ plot(1, pos_M[:, 0], pos_M[:, 1], r'$x$ position (AU)',
 py.ylim([-10, 10])
 
 py.axis('Equal')
-plot(2, t, K_E, r'Time, $t$ (Month)', r'Kinetic Energy,
-     $K_E$ ($\times$'+str("% .*e"%(2, U_E))+'Joule', 'blue', 'K_E')
-plot(2, t, P_E, r'Time, $t$ (Month)', r'Potential Energy,
-     $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'red', 'P_E')
-plot(2, t, K_E+P_E, r'Time, $t$ (Month)', r'Total Energy,
-     $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'black', 'Total Energy')
+plot(2, t, K_E, r'Time, $t$ (Month)', r'Kinetic Energy, $K_E$ ($\times$'+str("% .*e"%(2, U_E))+'Joule', 'blue', 'K_E')
+plot(2, t, P_E, r'Time, $t$ (Month)', r'Potential Energy, $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'red', 'P_E')
+plot(2, t, K_E+P_E, r'Time, $t$ (Month)', r'Total Energy, $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'black', 'Total Energy')
 q = py.legend(loc=0)
 q.draw_frame(False)
 py.ylim([-200, 200])

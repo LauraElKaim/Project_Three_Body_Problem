@@ -18,7 +18,7 @@ class Mars():
 
     """
 
-    def init(self):
+    def __init__(self):
 
         """All parameters of Mars needed to solve for three body problem"""
 
@@ -30,7 +30,7 @@ class Mars():
         self.postion_y = 0
         self.postion_z = 0
 
-    def str(self):
+    def __str__(self):
 
         return f"""                The Mars'mass: {self.mass} \n
                 The velocity'mass in x direction: {self.velocity_x} \n
