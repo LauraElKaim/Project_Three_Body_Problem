@@ -227,198 +227,198 @@ def Euler(t, pos_S, v_S, h):
     return z
 
 
-def Euler_Crome(t, pos_S, v_S, h):
+# def Euler_Crome(t, pos_S, v_S, h):
 
-    z = np.zeros([2, 2])
-    pos_S = pos_S + h*dpos_S_dt(t, pos_S, v_S)
-    v_S = v_S + h*dv_S_dt(t, pos_S, v_S)
-    z = [pos_S, v_S]
+#     z = np.zeros([2, 2])
+#     pos_S = pos_S + h*dpos_S_dt(t, pos_S, v_S)
+#     v_S = v_S + h*dv_S_dt(t, pos_S, v_S)
+#     z = [pos_S, v_S]
 
-    return z
-
-
-def Runge_Kutta_4(t, pos_S, v_S, h, star, pos_S0, v_S0):
-
-    RK11 = dpos_S_dt(t, pos_S, v_S, star, pos_S0, v_S0)
-    RK21 = dv_S_dt(t, pos_S, v_S, star, pos_S0, v_S0)
-
-    RK12 = dpos_S_dt(t+0.5*h, pos_S+0.5*h*RK11,
-                     v_S+0.5*h*RK21, star, pos_S0, v_S0)
-    RK22 = dv_S_dt(t+0.5*h, pos_S+0.5*h*RK11, v_S+0.5*h*RK21,
-                   star, pos_S0, v_S0)
-
-    RK13 = dpos_S_dt(t+0.5*h, pos_S+0.5*h*RK12,
-                     v_S+0.5*h*RK22, star, pos_S0, v_S0)
-    RK23 = dv_S_dt(t+0.5*h, pos_S+0.5*h*RK12,
-                   v_S+0.5*h*RK22, star, pos_S0, v_S0)
-
-    RK14 = dpos_S_dt(t+h, pos_S+h*RK13, v_S+h*RK23, star, pos_S0, v_S0)
-    RK24 = dv_S_dt(t+h, pos_S+h*RK13, v_S + h*RK23, star, pos_S0, v_S0)
-
-    y0 = pos_S + h * (RK11+2.*RK12+2.*RK13+RK14) / 6.
-    y1 = v_S + h * (RK21+2.*RK22+2.*RK23+RK24) / 6.
-
-    z = np.zeros([2, 2])
-    z = [y0, y1]
-
-    return z
+#     return z
 
 
-def Kinetic_Energy(v_S):
+# def Runge_Kutta_4(t, pos_S, v_S, h, star, pos_S0, v_S0):
 
-    v_N = np.linalg.norm(v_S)
-    return 0.5*M_S*v_N**2
+#     RK11 = dpos_S_dt(t, pos_S, v_S, star, pos_S0, v_S0)
+#     RK21 = dv_S_dt(t, pos_S, v_S, star, pos_S0, v_S0)
 
+#     RK12 = dpos_S_dt(t+0.5*h, pos_S+0.5*h*RK11,
+#                      v_S+0.5*h*RK21, star, pos_S0, v_S0)
+#     RK22 = dv_S_dt(t+0.5*h, pos_S+0.5*h*RK11, v_S+0.5*h*RK21,
+#                    star, pos_S0, v_S0)
 
-def Potential_Energy(pos_S):
+#     RK13 = dpos_S_dt(t+0.5*h, pos_S+0.5*h*RK12,
+#                      v_S+0.5*h*RK22, star, pos_S0, v_S0)
+#     RK23 = dv_S_dt(t+0.5*h, pos_S+0.5*h*RK12,
+#                    v_S+0.5*h*RK22, star, pos_S0, v_S0)
 
-    F_mag = np.linalg.norm(Force_S_Sun(pos_S))
-    P_mag = np.linalg.norm(pos_S)
+#     RK14 = dpos_S_dt(t+h, pos_S+h*RK13, v_S+h*RK23, star, pos_S0, v_S0)
+#     RK24 = dv_S_dt(t+h, pos_S+h*RK13, v_S + h*RK23, star, pos_S0, v_S0)
 
-    return -F_mag*P_mag
+#     y0 = pos_S + h * (RK11+2.*RK12+2.*RK13+RK14) / 6.
+#     y1 = v_S + h * (RK21+2.*RK22+2.*RK23+RK24) / 6.
 
+#     z = np.zeros([2, 2])
+#     z = [y0, y1]
 
-def Kinetic_Moment(pos_S, v_S):
-
-    r_N = np.linalg.norm(pos_S)
-    v_N = np.linalg.norm(v_S)
-    pos_S = pos_S/r_N
-    v_S = v_S/v_N
-    pos_S_dot_v_S = pos_S[0] * v_S[0] + pos_S[1] * v_S[1]
-    theta = math.acos(pos_S_dot_v_S)
-
-    return M_S*r_N*v_N*np.sin(theta)
-
-
-def AreaCalc(pos_S1, pos_S2):
-
-    pos_S1 = np.linalg.norm(pos_S1)
-    pos_S2 = np.linalg.norm(pos_S2)
-    pos_S1 = pos_S1 + 1e-20
-    pos_S2 = pos_S2 + 1e-20
-    theta_1 = math.atan(abs(pos_S1[1]/pos_S1[0]))
-    theta_2 = math.atan(abs(pos_S2[1]/pos_S2[0]))
-    pos_S = (pos_S1 + pos_S2) / 2.
-    del_theta = np.abs(theta_1 - theta_2)
-
-    return (del_theta*pos_S**2)/2.
+#     return z
 
 
-def plot(fig, x, y, x_l, y_l, clr, lbl):
+# def Kinetic_Energy(v_S):
 
-    py.figure(fig)
-    py.xlabel(x_l)
-    py.ylabel(y_l)
-
-    return py.plot(x, y, clr, linewidth=1.0, label=lbl)
+#     v_N = np.linalg.norm(v_S)
+#     return 0.5*M_S*v_N**2
 
 
-K_E[0] = Kinetic_Energy(v_S[0, :])
-P_E[0] = Potential_Energy(pos_S[0, :])
-A_M[0] = Kinetic_Moment(pos_S[0, :], v_S[0, :])
-AreaVal[0] = 0
+# def Potential_Energy(pos_S):
+
+#     F_mag = np.linalg.norm(Force_S_Sun(pos_S))
+#     P_mag = np.linalg.norm(pos_S)
+
+#     return -F_mag*P_mag
 
 
-for i in range(0, Pts-1):
+# def Kinetic_Moment(pos_S, v_S):
 
-    [pos_S[i+1, :], v_S[i+1, :]] = Runge_Kutta_4(t[i], pos_S[i, :],
-                                                 v_S[i, :], h, 'Saturne',
-                                                 pos_M[i, :], v_M[i, :])
-    [pos_M[i+1, :], v_M[i+1, :]] = Runge_Kutta_4(t[i], pos_M[i, :], v_M[i, :],
-                                                 h, 'Mercure', pos_S[i, :],
-                                                 v_S[i, :])
+#     r_N = np.linalg.norm(pos_S)
+#     v_N = np.linalg.norm(v_S)
+#     pos_S = pos_S/r_N
+#     v_S = v_S/v_N
+#     pos_S_dot_v_S = pos_S[0] * v_S[0] + pos_S[1] * v_S[1]
+#     theta = math.acos(pos_S_dot_v_S)
 
-    K_E[i+1] = Kinetic_Energy(v_S[i+1, :])
-    P_E[i+1] = Potential_Energy(pos_S[i+1, :])
-    A_M[i+1] = Kinetic_Moment(pos_S[i+1, :], v_S[i+1, :])
-    AreaVal[i+1] = AreaVal[i] + AreaCalc(pos_S[i, :], pos_S[i+1, :])
+#     return M_S*r_N*v_N*np.sin(theta)
 
 
-U_F = (G*M_n**2)/2
-U_E = U_F * N_d
+# def AreaCalc(pos_S1, pos_S2):
 
-lbl = 'Orbit'
-py.plot(0, 0, 'pos_S0', linewidth=7)
-plot(1, pos_S[:, 0], pos_S[:, 1], r'$x$ position (AU)',
-     r'$y$ position (AU)', 'green', 'Saturne')
-plot(1, pos_M[:, 0], pos_M[:, 1], r'$x$ position (AU)',
-     r'$y$ position (AU)', 'silver', 'Mercure')
-py.ylim([-10, 10])
+#     pos_S1 = np.linalg.norm(pos_S1)
+#     pos_S2 = np.linalg.norm(pos_S2)
+#     pos_S1 = pos_S1 + 1e-20
+#     pos_S2 = pos_S2 + 1e-20
+#     theta_1 = math.atan(abs(pos_S1[1]/pos_S1[0]))
+#     theta_2 = math.atan(abs(pos_S2[1]/pos_S2[0]))
+#     pos_S = (pos_S1 + pos_S2) / 2.
+#     del_theta = np.abs(theta_1 - theta_2)
 
-py.axis('Equal')
-plot(2, t, K_E, r'Time, $t$ (Month)', r'Kinetic Energy, $K_E$ ($\times$'+str("% .*e"%(2, U_E))+'Joule', 'blue', 'K_E')
-plot(2, t, P_E, r'Time, $t$ (Month)', r'Potential Energy, $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'red', 'P_E')
-plot(2, t, K_E+P_E, r'Time, $t$ (Month)', r'Total Energy, $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'black', 'Total Energy')
-q = py.legend(loc=0)
-q.draw_frame(False)
-py.ylim([-200, 200])
-
-plot(3, t, A_M, r'Time, $t$ (Month)', r'Kinetic Moment', 'black', lbl)
-py.ylim([2, 10])
-
-plot(4, t, AreaVal, r'Time, $t$ (Month)',
-     r'Sweeped Area ($AU^2$)', 'black', lbl)
-
-########################
-# Animation
-
-def animate(i):
+#     return (del_theta*pos_S**2)/2.
 
 
-    Saturne_track = 40
-    Mercure_track = 200
-    time_month = 'Time elapsed = ' + str(round(t[i], 1)) + 'Month'
-    txt.set_text(time_month)
-    line1.set_data(pos_S[i: max(1, i-Saturne_track):-1, 0],
-                   pos_S[i: max(1, i-Saturne_track):-1, 1])
-    line2.set_data(pos_M[i: max(1, i-Mercure_track):-1, 0],
-                   pos_M[i: max(1, i-Mercure_track):-1, 1])
+# def plot(fig, x, y, x_l, y_l, clr, lbl):
 
-    return (line1, line2)
+#     py.figure(fig)
+#     py.xlabel(x_l)
+#     py.ylabel(y_l)
 
-##########################
-# Function for animation
-
-# fig, ax = py.subplots()
-# ax.axis('square')
-# ax.set_xlim((-8, 8))
-# ax.set_ylim((-8, 8))
-# ax.get_xaxis().set_ticks([])
-ax.get_yaxis().set_ticks([])
-
-ax.plot(0, 0, 'o', markersize=9, markerfacecolor="#FDB813",
-        markeredgecolor="#FD7813")
-line1, = ax.plot([], [], 'o-', color = '#d2eeff', markevery=10000,
-                markerfacecolor='#0077BE', linewidth=2)   # line for Saturne
-line2, = ax.plot([], [], 'o-', color = '#e3dccb', markersize=8,
-                markerfacecolor='#f66338', linewidth=2,
-                markevery=10000)   # line for Mercure
+#     return py.plot(x, y, clr, linewidth=1.0, label=lbl)
 
 
-ax.plot([-6,-5], [6.5,6.5], 'pos_S-')
-ax.text(-4.5, 6.3, r'1 AU = $1.496 \times 10^8$ km')
+# K_E[0] = Kinetic_Energy(v_S[0, :])
+# P_E[0] = Potential_Energy(pos_S[0, :])
+# A_M[0] = Kinetic_Moment(pos_S[0, :], v_S[0, :])
+# AreaVal[0] = 0
 
-ax.plot(-6, -6.2, 'o', color='#d2eeff', markerfacecolor='#0077BE')
-ax.text(-5.5, -6.4, 'Saturne')
 
-ax.plot(-3.3, -6.2, 'o', color='#e3dccb',
-        markersize=8, markerfacecolor='#f66338')
-ax.text(-2.9, -6.4, 'Mercure')
+# for i in range(0, Pts-1):
 
-ax.plot(5, -6.2, 'o', markersize=9, markerfacecolor="#FDB813",
-        markeredgecolor="#FD7813")
-ax.text(5.5, -6.4, 'Sun')
+#     [pos_S[i+1, :], v_S[i+1, :]] = Runge_Kutta_4(t[i], pos_S[i, :],
+#                                                  v_S[i, :], h, 'Saturne',
+#                                                  pos_M[i, :], v_M[i, :])
+#     [pos_M[i+1, :], v_M[i+1, :]] = Runge_Kutta_4(t[i], pos_M[i, :], v_M[i, :],
+#                                                  h, 'Mercure', pos_S[i, :],
+#                                                  v_S[i, :])
 
-txt = ax.text(0.24, 1.05, '--', transform=ax.transAxes, va='center')
-plt.title('Time elapsed, T=%i Month' %u)
+#     K_E[i+1] = Kinetic_Energy(v_S[i+1, :])
+#     P_E[i+1] = Potential_Energy(pos_S[i+1, :])
+#     A_M[i+1] = Kinetic_Moment(pos_S[i+1, :], v_S[i+1, :])
+#     AreaVal[i+1] = AreaVal[i] + AreaCalc(pos_S[i, :], pos_S[i+1, :])
 
-###############################
-# Call animation function
 
-animation = animation.FuncAnimation(fig, animate, init_func=init,
-                               frames=4000, interval=5, blit=True)
+# U_F = (G*M_n**2)/2
+# U_E = U_F * N_d
 
-HTML(animation.to_html5_video())
+# lbl = 'Orbit'
+# py.plot(0, 0, 'pos_S0', linewidth=7)
+# plot(1, pos_S[:, 0], pos_S[:, 1], r'$x$ position (AU)',
+#      r'$y$ position (AU)', 'green', 'Saturne')
+# plot(1, pos_M[:, 0], pos_M[:, 1], r'$x$ position (AU)',
+#      r'$y$ position (AU)', 'silver', 'Mercure')
+# py.ylim([-10, 10])
 
-# Enable the following line if you want to save the animation to file.
-anim.save('Orbit.mp4', fps=30, dpi=500, extra_args=['-vcodec', 'libx264'])
+# py.axis('Equal')
+# plot(2, t, K_E, r'Time, $t$ (Month)', r'Kinetic Energy, $K_E$ ($\times$'+str("% .*e"%(2, U_E))+'Joule', 'blue', 'K_E')
+# plot(2, t, P_E, r'Time, $t$ (Month)', r'Potential Energy, $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'red', 'P_E')
+# plot(2, t, K_E+P_E, r'Time, $t$ (Month)', r'Total Energy, $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'black', 'Total Energy')
+# q = py.legend(loc=0)
+# q.draw_frame(False)
+# py.ylim([-200, 200])
+
+# plot(3, t, A_M, r'Time, $t$ (Month)', r'Kinetic Moment', 'black', lbl)
+# py.ylim([2, 10])
+
+# plot(4, t, AreaVal, r'Time, $t$ (Month)',
+#      r'Sweeped Area ($AU^2$)', 'black', lbl)
+
+# ########################
+# # Animation
+
+# def animate(i):
+
+
+#     Saturne_track = 40
+#     Mercure_track = 200
+#     time_month = 'Time elapsed = ' + str(round(t[i], 1)) + 'Month'
+#     txt.set_text(time_month)
+#     line1.set_data(pos_S[i: max(1, i-Saturne_track):-1, 0],
+#                    pos_S[i: max(1, i-Saturne_track):-1, 1])
+#     line2.set_data(pos_M[i: max(1, i-Mercure_track):-1, 0],
+#                    pos_M[i: max(1, i-Mercure_track):-1, 1])
+
+#     return (line1, line2)
+
+# ##########################
+# # Function for animation
+
+# # fig, ax = py.subplots()
+# # ax.axis('square')
+# # ax.set_xlim((-8, 8))
+# # ax.set_ylim((-8, 8))
+# # ax.get_xaxis().set_ticks([])
+# ax.get_yaxis().set_ticks([])
+
+# ax.plot(0, 0, 'o', markersize=9, markerfacecolor="#FDB813",
+#         markeredgecolor="#FD7813")
+# line1, = ax.plot([], [], 'o-', color = '#d2eeff', markevery=10000,
+#                 markerfacecolor='#0077BE', linewidth=2)   # line for Saturne
+# line2, = ax.plot([], [], 'o-', color = '#e3dccb', markersize=8,
+#                 markerfacecolor='#f66338', linewidth=2,
+#                 markevery=10000)   # line for Mercure
+
+
+# ax.plot([-6,-5], [6.5,6.5], 'pos_S-')
+# ax.text(-4.5, 6.3, r'1 AU = $1.496 \times 10^8$ km')
+
+# ax.plot(-6, -6.2, 'o', color='#d2eeff', markerfacecolor='#0077BE')
+# ax.text(-5.5, -6.4, 'Saturne')
+
+# ax.plot(-3.3, -6.2, 'o', color='#e3dccb',
+#         markersize=8, markerfacecolor='#f66338')
+# ax.text(-2.9, -6.4, 'Mercure')
+
+# ax.plot(5, -6.2, 'o', markersize=9, markerfacecolor="#FDB813",
+#         markeredgecolor="#FD7813")
+# ax.text(5.5, -6.4, 'Sun')
+
+# txt = ax.text(0.24, 1.05, '--', transform=ax.transAxes, va='center')
+# plt.title('Time elapsed, T=%i Month' %u)
+
+# ###############################
+# # Call animation function
+
+# animation = animation.FuncAnimation(fig, animate, init_func=init,
+#                                frames=4000, interval=5, blit=True)
+
+# HTML(animation.to_html5_video())
+
+# # Enable the following line if you want to save the animation to file.
+# anim.save('Orbit.mp4', fps=30, dpi=500, extra_args=['-vcodec', 'libx264'])
