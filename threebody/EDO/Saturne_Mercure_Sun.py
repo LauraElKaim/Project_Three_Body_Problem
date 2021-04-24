@@ -242,11 +242,15 @@ def Runge_Kutta_4(t, pos_S, v_S, h, star, pos_S0, v_S0):
     RK11 = dpos_S_dt(t, pos_S, v_S, star, pos_S0, v_S0)
     RK21 = dv_S_dt(t, pos_S, v_S, star, pos_S0, v_S0)
 
-    RK12 = dpos_S_dt(t+0.5*h, pos_S+0.5*h*RK11, v_S+0.5*h*RK21, star, pos_S0, v_S0)
-    RK22 = dv_S_dt(t+0.5*h, pos_S+0.5*h*RK11, v_S+0.5*h*RK21, star, pos_S0, v_S0)
+    RK12 = dpos_S_dt(t+0.5*h, pos_S+0.5*h*RK11,
+                     v_S+0.5*h*RK21, star, pos_S0, v_S0)
+    RK22 = dv_S_dt(t+0.5*h, pos_S+0.5*h*RK11, v_S+0.5*h*RK21,
+                   star, pos_S0, v_S0)
 
-    RK13 = dpos_S_dt(t+0.5*h, pos_S+0.5*h*RK12, v_S+0.5*h*RK22, star, pos_S0, v_S0)
-    RK23 = dv_S_dt(t+0.5*h, pos_S+0.5*h*RK12, v_S+0.5*h*RK22, star, pos_S0, v_S0)
+    RK13 = dpos_S_dt(t+0.5*h, pos_S+0.5*h*RK12,
+                     v_S+0.5*h*RK22, star, pos_S0, v_S0)
+    RK23 = dv_S_dt(t+0.5*h, pos_S+0.5*h*RK12,
+                   v_S+0.5*h*RK22, star, pos_S0, v_S0)
 
     RK14 = dpos_S_dt(t+h, pos_S+h*RK13, v_S+h*RK23, star, pos_S0, v_S0)
     RK24 = dv_S_dt(t+h, pos_S+h*RK13, v_S + h*RK23, star, pos_S0, v_S0)
@@ -317,8 +321,12 @@ AreaVal[0] = 0
 
 for i in range(0, Pts-1):
 
-    [pos_S[i+1, :], v_S[i+1, :]] = Runge_Kutta_4(t[i], pos_S[i, :], v_S[i, :], h, 'Saturne', pos_M[i, :], v_M[i, :])
-    [pos_M[i+1, :], v_M[i+1, :]] = Runge_Kutta_4(t[i], pos_M[i, :], v_M[i, :], h, 'Mercure', pos_S[i, :], v_S[i, :])
+    [pos_S[i+1, :], v_S[i+1, :]] = Runge_Kutta_4(t[i], pos_S[i, :],
+                                                 v_S[i, :], h, 'Saturne',
+                                                 pos_M[i, :], v_M[i, :])
+    [pos_M[i+1, :], v_M[i+1, :]] = Runge_Kutta_4(t[i], pos_M[i, :], v_M[i, :],
+                                                 h, 'Mercure', pos_S[i, :],
+                                                 v_S[i, :])
 
     K_E[i+1] = Kinetic_Energy(v_S[i+1, :])
     P_E[i+1] = Potential_Energy(pos_S[i+1, :])
@@ -331,14 +339,19 @@ U_E = U_F * N_d
 
 lbl = 'Orbit'
 py.plot(0, 0, 'pos_S0', linewidth=7)
-plot(1, pos_S[:, 0], pos_S[:, 1], r'$x$ position (AU)', r'$y$ position (AU)', 'green', 'Saturne')
-plot(1, pos_M[:, 0], pos_M[:, 1], r'$x$ position (AU)', r'$y$ position (AU)', 'silver', 'Mercure')
+plot(1, pos_S[:, 0], pos_S[:, 1], r'$x$ position (AU)',
+     r'$y$ position (AU)', 'green', 'Saturne')
+plot(1, pos_M[:, 0], pos_M[:, 1], r'$x$ position (AU)',
+     r'$y$ position (AU)', 'silver', 'Mercure')
 py.ylim([-10, 10])
 
 py.axis('Equal')
-plot(2, t, K_E, r'Time, $t$ (Month)', r'Kinetic Energy, $K_E$ ($\times$'+str("% .*e"%(2, U_E))+'Joule', 'blue', 'K_E')
-plot(2, t, P_E, r'Time, $t$ (Month)', r'Potential Energy, $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'red', 'P_E')
-plot(2, t, K_E+P_E, r'Time, $t$ (Month)', r'Total Energy, $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'black', 'Total Energy')
+plot(2, t, K_E, r'Time, $t$ (Month)', r'Kinetic Energy,
+     $K_E$ ($\times$'+str("% .*e"%(2, U_E))+'Joule', 'blue', 'K_E')
+plot(2, t, P_E, r'Time, $t$ (Month)', r'Potential Energy,
+     $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'red', 'P_E')
+plot(2, t, K_E+P_E, r'Time, $t$ (Month)', r'Total Energy,
+     $K_E$ ($\times$'+str("%.*e"%(2, U_E))+'Joule', 'black', 'Total Energy')
 q = py.legend(loc=0)
 q.draw_frame(False)
 py.ylim([-200, 200])
@@ -346,7 +359,8 @@ py.ylim([-200, 200])
 plot(3, t, A_M, r'Time, $t$ (Month)', r'Kinetic Moment', 'black', lbl)
 py.ylim([2, 10])
 
-plot(4, t, AreaVal, r'Time, $t$ (Month)', r'Sweeped Area ($AU^2$)', 'black', lbl)
+plot(4, t, AreaVal, r'Time, $t$ (Month)',
+     r'Sweeped Area ($AU^2$)', 'black', lbl)
 
 ########################
 # Animation
@@ -358,9 +372,11 @@ def animate(i):
     Mercure_track = 200
     time_month = 'Time elapsed = ' + str(round(t[i], 1)) + 'Month'
     txt.set_text(time_month)
-    line1.set_data(pos_S[i: max(1, i-Saturne_track):-1, 0], pos_S[i: max(1, i-Saturne_track):-1, 1])
-    line2.set_data(pos_M[i: max(1, i-Mercure_track):-1, 0], pos_M[i: max(1, i-Mercure_track):-1, 1])
-    
+    line1.set_data(pos_S[i: max(1, i-Saturne_track):-1, 0],
+                   pos_S[i: max(1, i-Saturne_track):-1, 1])
+    line2.set_data(pos_M[i: max(1, i-Mercure_track):-1, 0],
+                   pos_M[i: max(1, i-Mercure_track):-1, 1])
+
     return (line1, line2)
 
 ##########################
@@ -373,11 +389,13 @@ def animate(i):
 # ax.get_xaxis().set_ticks([])
 ax.get_yaxis().set_ticks([])
 
-ax.plot(0, 0, 'o', markersize=9, markerfacecolor="#FDB813", markeredgecolor="#FD7813")
+ax.plot(0, 0, 'o', markersize=9, markerfacecolor="#FDB813",
+        markeredgecolor="#FD7813")
 line1, = ax.plot([], [], 'o-', color = '#d2eeff', markevery=10000,
                 markerfacecolor='#0077BE', linewidth=2)   # line for Saturne
 line2, = ax.plot([], [], 'o-', color = '#e3dccb', markersize=8,
-                markerfacecolor='#f66338', linewidth=2, markevery=10000)   # line for Mercure
+                markerfacecolor='#f66338', linewidth=2,
+                markevery=10000)   # line for Mercure
 
 
 ax.plot([-6,-5], [6.5,6.5], 'pos_S-')
@@ -386,10 +404,12 @@ ax.text(-4.5, 6.3, r'1 AU = $1.496 \times 10^8$ km')
 ax.plot(-6, -6.2, 'o', color='#d2eeff', markerfacecolor='#0077BE')
 ax.text(-5.5, -6.4, 'Saturne')
 
-ax.plot(-3.3, -6.2, 'o', color='#e3dccb', markersize=8, markerfacecolor='#f66338')
+ax.plot(-3.3, -6.2, 'o', color='#e3dccb',
+        markersize=8, markerfacecolor='#f66338')
 ax.text(-2.9, -6.4, 'Mercure')
 
-ax.plot(5, -6.2, 'o', markersize=9, markerfacecolor="#FDB813", markeredgecolor="#FD7813")
+ax.plot(5, -6.2, 'o', markersize=9, markerfacecolor="#FDB813",
+        markeredgecolor="#FD7813")
 ax.text(5.5, -6.4, 'Sun')
 
 txt = ax.text(0.24, 1.05, '--', transform=ax.transAxes, va='center')
