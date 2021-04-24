@@ -1,4 +1,4 @@
-Exlanation functions
+Explanation functions
 ======================
 
 All the functions of threebody package
@@ -18,7 +18,7 @@ EDO_3's functions
 .. autofunction:: EDO.EDO_3.velocity
 
 .. note::
-        The formula used is for the velocity `v` is given below
+        The formula used is for the velocity :math:`v` is given below
 .. math:: v = \sqrt{\frac{G*M}{r}}
 
 
@@ -29,17 +29,17 @@ EDO_3's functions
 This function uses the `RK4` (Runge Kutta 4) method to solve 
 the differential system composed of 18 equations of order 1 
 of the 3 body problem.
-The RK4 method allows to solve the differential equation `y' = f(y,t)`,
-where y and t can be a scalar or vector and y' is the derivative of y.
-In physic's problem, t represent generally the time, this is the case for three body problem   
+The `RK4` method allows to solve the differential equation :math:`y' = f(y,t)`,
+where :math:`y` and :math:`t` can be a scalar or vector and :math:`y'` is the derivative of :math:`y`.
+In physic's problem, :math:`t` represent generally the time, this is the case for three body problem.   
 
 .. note::  
-	t_upper is put at 24*3600*687 to simulate a marsian year.
+	`t_upper` is put at 24*3600*687 to simulate a marsian year.
     	It can be put at 24*3600*365 to simulate a earth year. 
 
 
 .. Attention:: 
-	h is not recomended to change, it can make the algorithm very instable
+	:math:`h` is not recomended to change, it can make the algorithm very instable
 
 .. autofunction:: EDO.EDO_3.derivative
 
@@ -71,7 +71,7 @@ Saturne_Mercure_Sun_problem's function
 
 --------------------------------------------------------------------
 
-Two_body_problem
+Two_body_problem's function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. autofunction EDO.Two_body_problem.TwoBodyEquations

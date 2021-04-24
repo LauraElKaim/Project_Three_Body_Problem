@@ -22,5 +22,13 @@ For the package to work properly, you will need to install some additional packa
 The ``requirements.txt`` file lists all necessary packages.  
 
 .. code-block:: txt
-    
 
+    pytest==6.2.2
+    numba==0.51.2
+    scipy==1.5.2
+    imageio==2.9.0
+    matplotlib==3.3.2
+    moviepy==1.0.3
+    numpy==1.19.2
+    ipython==7.22.0
+    path.py==12.5.0

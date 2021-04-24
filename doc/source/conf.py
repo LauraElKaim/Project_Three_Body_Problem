@@ -13,12 +13,16 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('c:/Users/HP/Project_Three_Body_Problem/threebody'))
 import sphinx_rtd_theme
+sys.path.insert(0, os.path.abspath('c:/Users/laulau/Project_Three_Body_Problem/threebody'))
+#sys.path.insert(0, os.path.abspath('c:/Users/mfatt/Project_Three_Body_Problem/threebody'))
+
 # -- Project information -----------------------------------------------------
 
+
 def setup(app):
-    app.add_stylesheet(os.path.join("css","custom.css"))
+    app.add_stylesheet(os.path.join("css", "custom.css"))
+
 
 project = 'threebody'
 copyright = "2021, Mohamed Fattouhy, Amine Touzani, Gueladio Niasse, Laura El Kaim"
@@ -26,7 +30,6 @@ author = "Mohamed Fattouhy, Amine Touzani, Gueladio Niasse, Laura El Kaim"
 
 # The full version, including alpha/beta/rc tags
 release = '0.1.1'
-
 
 
 # -- General configuration ---------------------------------------------------

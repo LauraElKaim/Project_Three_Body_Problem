@@ -1,4 +1,4 @@
-To constact us
+To contact us
 ================
 
 If you want to make a suggestion or ask a question, you can contact us through our `Github <https://github.com/LauraElKaim/Project_Three_Body_Problem>`_ page.

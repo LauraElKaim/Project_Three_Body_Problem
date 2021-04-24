@@ -24,7 +24,7 @@ This package was created as part of the software development course. The objecti
 
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :Caption: Function
    
    Function/function
