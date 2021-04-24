@@ -12,6 +12,7 @@
 *.out
 *.tex
 *.log
+*.ipynb_checkpoints
 
 # User-specific files
 *.rsuser
