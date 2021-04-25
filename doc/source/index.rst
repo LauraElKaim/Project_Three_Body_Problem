@@ -37,7 +37,7 @@ This package was created as part of the software development course. The objecti
    :Caption: Another example : Two body
 
    Two_body/Two_body_problem
-   Two_body/function
+
 
 .. toctree::
    :maxdepth: 2
