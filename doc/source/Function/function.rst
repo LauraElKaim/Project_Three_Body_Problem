@@ -7,9 +7,7 @@ All the functions of threebody package
 EDO_3's functions
 ~~~~~~~~~~~~~~~~~~
 
-.. automodule:: threebody.EDO
-
-.. autofunction:: EDO.EDO_3.distance
+.. autofunction:: threebody.EDO.EDO_3.distance
 
 .. note:: 
 	The formula used is the euclidian distance, given below

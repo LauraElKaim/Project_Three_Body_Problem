@@ -29,6 +29,9 @@ This package was created as part of the software development course. The objecti
    
    Function/function
 
+.. automodule:: threebody
+.. automodule:: threebody.EDO
+
 .. toctree::
    :maxdepth: 2
    :Caption: Another example : Two body
