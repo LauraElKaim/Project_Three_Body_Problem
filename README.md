@@ -3,7 +3,7 @@
 
 <center>
 
-![threebody](threebody/Vis/Images/Images_2/file_000.png)
+![threebody](threebody/Vis/Gifs/three_body.gif)
 
 </center>
 
@@ -57,4 +57,8 @@ Then they will focus on unit test.
 
 The goal is to get something like this in motion (gif or mp4):
 
-![image](https://user-images.githubusercontent.com/78499945/112620163-70f6f180-8e28-11eb-8479-599305bcabf4.png)
+<center>
+
+![threebody](threebody/Vis/Images/Images_2/file_000.png)
+
+</center>
