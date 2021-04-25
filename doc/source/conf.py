@@ -14,8 +14,8 @@
 import os
 import sys
 import sphinx_rtd_theme
-#sys.path.insert(0, os.path.abspath('c:/Users/laulau/Project_Three_Body_Problem/threebody'))
-sys.path.insert(0, os.path.abspath('c:/Users/mfatt/Project_Three_Body_Problem/threebody'))
+sys.path.insert(0, os.path.abspath('c:/Users/laulau/Project_Three_Body_Problem/threebody'))
+#sys.path.insert(0, os.path.abspath('c:/Users/mfatt/Project_Three_Body_Problem/threebody'))
 
 # -- Project information -----------------------------------------------------
 

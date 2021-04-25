@@ -36,6 +36,11 @@ This package was created as part of the software development course. The objecti
    Two_body/Two_body_problem
    Two_body/function
 
+.. toctree::
+   :maxdepth: 2
+   :Caption: Some examples
+
+   Examples/Examples
 
 .. toctree::
    :maxdepth: 2
@@ -43,12 +48,6 @@ This package was created as part of the software development course. The objecti
    
    contact_sources/Contact
    contact_sources/Sources
-
-.. toctree::
-   :maxdepth: 2
-   :Caption: Some examples
-
-   Examples/Examples
 
 Indices and tables
 ==================
