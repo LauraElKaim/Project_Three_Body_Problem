@@ -3,7 +3,7 @@
 
 <center>
 
-![threebody](threebody/Vis/Gifs/three_body.gif)
+![threebody](threebody/Vis/Gifs/Three_body.gif)
 
 </center>
 
