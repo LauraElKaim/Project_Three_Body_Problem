@@ -27,9 +27,21 @@ Here, we will be interested by the sun, mars and the earth. And our starting poi
 In few words, this problem consists in finding mathematical solutions to differential equations with well chosen initial conditions. 
 These differential equations describe the motions of three bodies attracting each other under the effect of gravity.
 
+## To install the package
+
+The package is hosted on [Test.Pypi](https://test.pypi.org/project/threebody/), to install it type in a terminal :
+
+```{bash} 
+$ pip install -i https://test.pypi.org/simple/ threebody
+```
+
 ## Documentation
 
 The documentation of this package is available [here](https://project-three-body-problem.readthedocs.io/en/latest/?badge=latest).
+
+## Video presentation
+
+A presentation is available on [youtube](https://www.youtube.com/watch?v=hMskyuzyi0k).
 
 ## Plan
 

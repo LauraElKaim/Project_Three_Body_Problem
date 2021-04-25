@@ -7,13 +7,22 @@ How to install Threebody
 Install from Github
 -------------------
 
-To compile the ``script.py`` file you can clone the git repository with the command:
+To compile the ``script.py`` file you can clone the git repository from a terminal with by typing this :
 
 .. code-block:: bash
 
     $ git clone https://github.com/LauraElKaim/Project_Three_Body_Problem
 
-But also, you can download the threebody package hosted on the Pypi website.
+Install from `Test.Pypi <https://test.pypi.org/project/threebody/>`_
+---------------------------------------------------------------------
+
+Also, you can download the threebody package hosted on the `Test.Pypi <https://test.pypi.org/project/threebody/>`_ website
+from a terminal by typing this :
+
+.. code-block:: bash
+
+    $ pip install -i https://test.pypi.org/simple/ threebody
+
 
 Requirements
 -------------------

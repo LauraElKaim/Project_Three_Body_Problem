@@ -13,14 +13,14 @@ EDO_3's functions
 	The formula used is the euclidian distance, given below
 .. math:: d(X,Y) = \sqrt{\sum_{i=1}^{n} (x_i-y_i)^2}
 
-.. autofunction:: EDO.EDO_3.velocity
+.. autofunction:: threebody.EDO.EDO_3.velocity
 
 .. note::
         The formula used is for the velocity :math:`v` is given below
 .. math:: v = \sqrt{\frac{G*M}{r}}
 
 
-.. autofunction:: EDO.EDO_3.trajectories
+.. autofunction:: threebody.EDO.EDO_3.trajectories
 
 `Method used:`
 
@@ -39,32 +39,32 @@ In physic's problem, :math:`t` represent generally the time, this is the case fo
 .. Attention:: 
 	:math:`h` is not recomended to change, it can make the algorithm very instable
 
-.. autofunction:: EDO.EDO_3.derivative
+.. autofunction:: threebody.EDO.EDO_3.derivative
 
-.. autofunction:: Vis.visualisation.visualisation
+.. autofunction:: threebody.Vis.visualisation.visualisation
 
 
-.. autoclass:: Vis.visualisation.Animation
+.. autoclass:: threebody.Vis.visualisation.Animation
    :members: __call__
 
 
-.. autofunction:: Vis.visualisation.ConvertGif
+.. autofunction:: threebody.Vis.visualisation.ConvertGif
 
 
 Saturne_Mercure_Sun_problem's function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: EDO.Saturne_Mercure_Sun.init
+.. autofunction:: threebody.EDO.Saturne_Mercure_Sun.init
 
-.. autofunction:: EDO.Saturne_Mercure_Sun.Force_S_Sun
+.. autofunction:: threebody.EDO.Saturne_Mercure_Sun.Force_S_Sun
 
-.. autofunction:: EDO.Saturne_Mercure_Sun.Force_M_Sun
+.. autofunction:: threebody.EDO.Saturne_Mercure_Sun.Force_M_Sun
 
-.. autofunction:: EDO.Saturne_Mercure_Sun.Force_S_M
+.. autofunction:: threebody.EDO.Saturne_Mercure_Sun.Force_S_M
 
-.. autofunction:: EDO.Saturne_Mercure_Sun.Force
+.. autofunction:: threebody.EDO.Saturne_Mercure_Sun.Force
 
-.. autofunction:: EDO.Saturne_Mercure_Sun.Euler
+.. autofunction:: threebody.EDO.Saturne_Mercure_Sun.Euler
 
 
 --------------------------------------------------------------------
@@ -72,11 +72,11 @@ Saturne_Mercure_Sun_problem's function
 Two_body_problem's function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction EDO.Two_body_problem.TwoBodyEquations
+.. autofunction threebody.EDO.Two_body_problem.TwoBodyEquations
 
 .. note::
-         TwoBodyEquations
-	 This function takes in an array containing all the dependent variables
-	 (here the position and the speed) and an array containing all the
-	 independent variables (here the time) in that order. It returns the values
-	 of all the differentials in an array
+        TwoBodyEquations
+	 	This function takes in an array containing all the dependent variables
+		(here the position and the speed) and an array containing all the
+	 	independent variables (here the time) in that order. It returns the values
+	 	of all the differentials in an array
